@@ -22,7 +22,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Configfile
+
+```ruby
+SiteMercado.config do |config|
+  config.client_id = '<CLIENT_ID>'
+  config.client_secret = '<CLIENT_SECRET>'
+end
+```
 
 ## Development
 
