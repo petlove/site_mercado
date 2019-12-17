@@ -5,6 +5,9 @@ require 'site_mercado/client'
 require 'site_mercado/configuration'
 require 'site_mercado/oauth'
 
+require 'site_mercado/models/v1/event'
+require 'site_mercado/models/v1/order'
+
 module SiteMercado
   class Error < StandardError; end
 

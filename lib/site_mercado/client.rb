@@ -30,7 +30,7 @@ module SiteMercado
         parser(response.body)
       end
 
-      def post(path, body, auth: true)
+      def post(path, body = {}, auth: true)
         response = connection.post do |request|
           request.url "#{api_version}#{path}"
           request.headers['Content-Type'] = 'application/json'
@@ -49,7 +49,12 @@ module SiteMercado
       end
 
       def parser(json)
-        JSON.parse(json)
+        parsed = JSON.parse(json)
+        return OpenStruct.new(parsed) if parsed.is_a?(Hash)
+
+        parsed.map do |parse|
+          OpenStruct.new(parse)
+        end
       end
 
       def connection

@@ -3,6 +3,8 @@ require:
 
 Layout/LineLength:
   Max: 120
+Naming/AccessorMethodName:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
@@ -17,3 +19,5 @@ Metrics/MethodLength:
 
 AllCops:
   DisplayCopNames: true
+Style/FrozenStringLiteralComment:
+  Enabled: false
