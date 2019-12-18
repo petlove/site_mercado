@@ -4,6 +4,10 @@ require 'faraday'
 require 'json'
 
 module SiteMercado
+  class StatusUnknownError < StandardError; end
+  class UnauthorizedError < StandardError; end
+  class PreconditionFailedError < StandardError; end
+
   class Client
     class << self
       def api_version
@@ -22,43 +26,111 @@ module SiteMercado
         response = connection.get do |request|
           request.url "#{api_version}#{path}"
           request.params = params
-          request.headers['Content-Type'] = 'application/json'
-          request.headers['accept'] = 'application/json'
-          request.headers['authorization'] = "Bearer #{token}" if auth
+          request.headers.merge!('authorization': "Bearer #{token}") if auth
         end
+        status = response.status
 
-        parser(response.body)
+        parser_status(status)
+        parser(response.body, status)
+      rescue JSON::ParserError
+        OpenStruct.new({ status: 'parser_error' })
+      rescue StatusUnknownError
+        OpenStruct.new({ error: 'status_unknown' })
+      rescue UnauthorizedError
+        OpenStruct.new({ error: 'unauthorized' })
+      rescue PreconditionFailedError
+        OpenStruct.new({ error: 'precondition_failed' })
       end
 
       def post(path, body = {}, auth: true)
         response = connection.post do |request|
           request.url "#{api_version}#{path}"
-          request.headers['Content-Type'] = 'application/json'
-          request.headers['accept'] = 'application/json'
-          request.headers['authorization'] = "Bearer #{token}" if auth
+          request.headers.merge!('authorization': "Bearer #{token}") if auth
           request.body = body.to_json
         end
 
-        parser(response.body)
+        status = parser_status(response.status)
+        parser(response.body, status)
+      rescue JSON::ParserError
+        OpenStruct.new({ status: 'parser_error' })
+      rescue StatusUnknownError
+        OpenStruct.new({ error: 'status_unknown' })
+      rescue UnauthorizedError
+        OpenStruct.new({ error: 'unauthorized' })
+      rescue PreconditionFailedError
+        OpenStruct.new({ error: 'precondition_failed' })
+      end
+
+      def put(path, body = {}, auth: true)
+        response = connection.put do |request|
+          request.url "#{api_version}#{path}"
+          request.headers.merge!('authorization': "Bearer #{token}") if auth
+          request.body = body.to_json
+        end
+
+        status = parser_status(response.status)
+        parser(response.body, status)
+      rescue JSON::ParserError
+        OpenStruct.new({ status: 'parser_error' })
+      rescue StatusUnknownError
+        OpenStruct.new({ error: 'status_unknown' })
+      rescue UnauthorizedError
+        OpenStruct.new({ error: 'unauthorized' })
+      rescue PreconditionFailedError
+        OpenStruct.new({ error: 'precondition_failed' })
       end
 
       private
+
+      def parser_status(status)
+        case status
+        when 200, 201, 202
+          :ok
+        when 204
+          :no_content
+        when 401
+          raise UnauthorizedError, 'Unauthorized'
+        when 412
+          raise PreconditionFailedError, 'Invalid State'
+        else
+          raise StatusUnknownError, 'Status unknown'
+        end
+      end
+
+      def default_headers
+        {
+          'Content-Type' => 'application/json',
+          'accept' => 'application/json'
+        }
+      end
 
       def token
         SiteMercado.oauth.token
       end
 
-      def parser(json)
+      def parser(json, status)
+        return { status: :no_content } if no_content?(json, status)
+
         parsed = JSON.parse(json)
-        return OpenStruct.new(parsed) if parsed.is_a?(Hash)
+        if parsed.is_a?(Hash)
+          parsed.merge(status: status)
+          return OpenStruct.new(parsed)
+        end
 
         parsed.map do |parse|
-          OpenStruct.new(parse)
+          OpenStruct.new(parse.merge(status: status))
         end
       end
 
+      def no_content?(json, status)
+        json.empty? && status == :no_content
+      end
+
       def connection
-        @connection ||= Faraday.new(url: endpoint)
+        @connection ||= Faraday.new(
+          url: endpoint,
+          headers: default_headers
+        )
       end
     end
   end

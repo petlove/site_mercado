@@ -44,8 +44,14 @@ module SiteMercado
 
     attr_reader(*ATTRS)
 
-    def self.find_order(code)
-      new(Client.get("/pedido/#{code}"))
+    class << self
+      def find_order(code)
+        new(Client.get("/pedido/#{code}"))
+      end
+
+      def in_separation(code)
+        Client.put("/pedido/#{code}/status/em_separacao")
+      end
     end
 
     def initialize(params)
