@@ -2,6 +2,14 @@
 
 require 'bundler/setup'
 require 'site_mercado'
+require 'support/configs/simple_cov_config'
+require 'support/configs/vcr_config'
+
+SimpleCovConfig.configure
+VCRConfig.configure
+
+require 'dotenv'
+Dotenv.load('.env.test')
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
