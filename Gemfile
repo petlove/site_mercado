@@ -3,8 +3,8 @@
 source 'https://rubygems.org'
 
 group :test do
-  gem 'rspec'
   gem 'faker'
+  gem 'rspec'
 end
 
 gemspec

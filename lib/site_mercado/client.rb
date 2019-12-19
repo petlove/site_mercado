@@ -33,51 +33,51 @@ module SiteMercado
         parser_status(status)
         parser(response.body, status)
       rescue JSON::ParserError
-        OpenStruct.new({ status: 'parser_error' })
+        OpenStruct.new(status: 'parser_error')
       rescue StatusUnknownError
-        OpenStruct.new({ error: 'status_unknown' })
+        OpenStruct.new(error: 'status_unknown')
       rescue UnauthorizedError
-        OpenStruct.new({ error: 'unauthorized' })
+        OpenStruct.new(error: 'unauthorized')
       rescue PreconditionFailedError
-        OpenStruct.new({ error: 'precondition_failed' })
+        OpenStruct.new(error: 'precondition_failed')
       end
 
       def post(path, body = {}, auth: true)
         response = connection.post do |request|
           request.url "#{api_version}#{path}"
-          request.headers.merge!('authorization': "Bearer #{token}") if auth
+          request.headers[:authorization] = "Bearer #{token}" if auth
           request.body = body.to_json
         end
 
         status = parser_status(response.status)
         parser(response.body, status)
       rescue JSON::ParserError
-        OpenStruct.new({ status: 'parser_error' })
+        OpenStruct.new(status: 'parser_error')
       rescue StatusUnknownError
-        OpenStruct.new({ error: 'status_unknown' })
+        OpenStruct.new(error: 'status_unknown')
       rescue UnauthorizedError
-        OpenStruct.new({ error: 'unauthorized' })
+        OpenStruct.new(error: 'unauthorized')
       rescue PreconditionFailedError
-        OpenStruct.new({ error: 'precondition_failed' })
+        OpenStruct.new(error: 'precondition_failed')
       end
 
       def put(path, body = {}, auth: true)
         response = connection.put do |request|
           request.url "#{api_version}#{path}"
-          request.headers.merge!('authorization': "Bearer #{token}") if auth
+          request.headers[:authorization] = "Bearer #{token}" if auth
           request.body = body.to_json
         end
 
         status = parser_status(response.status)
         parser(response.body, status)
       rescue JSON::ParserError
-        OpenStruct.new({ status: 'parser_error' })
+        OpenStruct.new(status: 'parser_error')
       rescue StatusUnknownError
-        OpenStruct.new({ error: 'status_unknown' })
+        OpenStruct.new(error: 'status_unknown')
       rescue UnauthorizedError
-        OpenStruct.new({ error: 'unauthorized' })
+        OpenStruct.new(error: 'unauthorized')
       rescue PreconditionFailedError
-        OpenStruct.new({ error: 'precondition_failed' })
+        OpenStruct.new(error: 'precondition_failed')
       end
 
       private
