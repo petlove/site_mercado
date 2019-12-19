@@ -7,6 +7,7 @@ require 'site_mercado/oauth'
 
 require 'site_mercado/resources/v1/event'
 require 'site_mercado/resources/v1/order'
+<<<<<<< HEAD
 
 require 'site_mercado/entities/base'
 require 'site_mercado/entities/event'
@@ -17,6 +18,8 @@ require 'site_mercado/entities/payment'
 require 'site_mercado/entities/item'
 
 require 'site_mercado/helpers/order_parser'
+=======
+>>>>>>> Adds test to oauth and configuration
 
 module SiteMercado
   class Error < StandardError; end
