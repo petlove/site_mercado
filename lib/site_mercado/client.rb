@@ -106,10 +106,7 @@ module SiteMercado
         return { status: :no_content } if no_content?(json, status)
 
         parsed = JSON.parse(json)
-        if parsed.is_a?(Hash)
-          parsed.merge(status: status)
-          return OpenStruct.new(parsed)
-        end
+        return OpenStruct.new(parsed) if parsed.is_a?(Hash)
 
         parsed.map { |parse| OpenStruct.new(parse) }
       end

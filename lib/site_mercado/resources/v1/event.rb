@@ -4,11 +4,15 @@ module SiteMercado
 
     class << self
       def all
-        Client.get('/pedido/eventos').map { |event| new(event) }
+        Client.get('/pedido/eventos').map do |event|
+          SiteMercado::Entities::Event.new(event)
+        end
       end
 
       def find_by_shop_id(shop_id)
-        Client.get("/pedido/eventos/#{shop_id}").map { |event| new(event) }
+        Client.get("/pedido/eventos/#{shop_id}").map do |event|
+          SiteMercado::Entities::Event.new(event)
+        end
       end
 
       def check_event(ids)
