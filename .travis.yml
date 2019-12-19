@@ -15,7 +15,7 @@ before_script:
   - ./cc-test-reporter before-build
 script:
   - bash bin/setup
-  - bundle exec rubocop --fail-fast
+  - bundle exec rubocop
   - bundle exec rspec --fail-fast
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
