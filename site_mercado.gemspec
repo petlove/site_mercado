@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'site_mercado/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'SiteMercado'
+  spec.name          = 'site_mercado'
   spec.version       = SiteMercado::VERSION
   spec.authors       = ['Petlove']
   spec.email         = ['tecnologia@petlove.com.br']
