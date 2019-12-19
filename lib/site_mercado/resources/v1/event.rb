@@ -1,11 +1,6 @@
 module SiteMercado
   class Event
-    attr_reader *%i[
-      id
-      order_id
-      status
-      shop_id
-    ]
+    attr_reader :id, :order_id, :status, :shop_id
 
     class << self
       def all

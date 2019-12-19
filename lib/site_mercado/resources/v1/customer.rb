@@ -14,6 +14,6 @@ module SiteMercado
       telefoneCelular: :phone_number,
       telefoneFixo: :home_number,
       enderecos: :address
-    }
+    }.freeze
   end
 end

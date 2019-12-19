@@ -118,10 +118,6 @@ module SiteMercado
         json.empty? && status == :no_content
       end
 
-      def no_content?(json, status)
-        json.empty? && status == :no_content
-      end
-
       def connection
         @connection ||= Faraday.new(
           url: endpoint,
