@@ -30,6 +30,7 @@ module SiteMercado
       }.freeze
 
       ATTRS = %i[
+        id
         shop_id
         shop_code
         created_at
