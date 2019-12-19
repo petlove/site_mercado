@@ -23,61 +23,43 @@ module SiteMercado
       end
 
       def get(path, params = {}, auth: true)
-        response = connection.get do |request|
-          request.url "#{api_version}#{path}"
-          request.params = params
-          request.headers.merge!('authorization': "Bearer #{token}") if auth
-        end
-        status = response.status
+        rescues do
+          response = connection.get do |request|
+            request.url "#{api_version}#{path}"
+            request.params = params
+            request.headers.merge!('authorization': "Bearer #{token}") if auth
+          end
+          status = response.status
 
-        parser_status(status)
-        parser(response.body, status)
-      rescue JSON::ParserError
-        OpenStruct.new(status: 'parser_error')
-      rescue StatusUnknownError
-        OpenStruct.new(error: 'status_unknown')
-      rescue UnauthorizedError
-        OpenStruct.new(error: 'unauthorized')
-      rescue PreconditionFailedError
-        OpenStruct.new(error: 'precondition_failed')
+          parser_status(status)
+          parser(response.body, status)
+        end
       end
 
       def post(path, body = {}, auth: true)
-        response = connection.post do |request|
-          request.url "#{api_version}#{path}"
-          request.headers[:authorization] = "Bearer #{token}" if auth
-          request.body = body.to_json
-        end
+        rescues do
+          response = connection.post do |request|
+            request.url "#{api_version}#{path}"
+            request.headers[:authorization] = "Bearer #{token}" if auth
+            request.body = body.to_json
+          end
 
-        status = parser_status(response.status)
-        parser(response.body, status)
-      rescue JSON::ParserError
-        OpenStruct.new(status: 'parser_error')
-      rescue StatusUnknownError
-        OpenStruct.new(error: 'status_unknown')
-      rescue UnauthorizedError
-        OpenStruct.new(error: 'unauthorized')
-      rescue PreconditionFailedError
-        OpenStruct.new(error: 'precondition_failed')
+          status = parser_status(response.status)
+          parser(response.body, status)
+        end
       end
 
       def put(path, body = {}, auth: true)
-        response = connection.put do |request|
-          request.url "#{api_version}#{path}"
-          request.headers[:authorization] = "Bearer #{token}" if auth
-          request.body = body.to_json
-        end
+        rescues do
+          response = connection.put do |request|
+            request.url "#{api_version}#{path}"
+            request.headers[:authorization] = "Bearer #{token}" if auth
+            request.body = body.to_json
+          end
 
-        status = parser_status(response.status)
-        parser(response.body, status)
-      rescue JSON::ParserError
-        OpenStruct.new(status: 'parser_error')
-      rescue StatusUnknownError
-        OpenStruct.new(error: 'status_unknown')
-      rescue UnauthorizedError
-        OpenStruct.new(error: 'unauthorized')
-      rescue PreconditionFailedError
-        OpenStruct.new(error: 'precondition_failed')
+          status = parser_status(response.status)
+          parser(response.body, status)
+        end
       end
 
       private
@@ -95,6 +77,18 @@ module SiteMercado
         else
           raise StatusUnknownError, 'Status unknown'
         end
+      end
+
+      def rescues(&block)
+        instance_exec(&block)
+      rescue JSON::ParserError
+        OpenStruct.new(status: 'parser_error')
+      rescue StatusUnknownError
+        OpenStruct.new(error: 'status_unknown')
+      rescue UnauthorizedError
+        OpenStruct.new(error: 'unauthorized')
+      rescue PreconditionFailedError
+        OpenStruct.new(error: 'precondition_failed')
       end
 
       def default_headers
