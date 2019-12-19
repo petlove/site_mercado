@@ -8,6 +8,10 @@ require 'site_mercado/oauth'
 require 'site_mercado/resources/v1/event'
 require 'site_mercado/resources/v1/order'
 
+require 'site_mercado/entities/base'
+require 'site_mercado/entities/address'
+require 'site_mercado/entities/customer'
+
 module SiteMercado
   class Error < StandardError; end
 
