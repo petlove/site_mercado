@@ -25,7 +25,7 @@ module SiteMercado
         uf
         state
         zipcode
-      ]
+      ].freeze
 
       def initialize(params)
         super(params)

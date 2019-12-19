@@ -20,7 +20,7 @@ module SiteMercado
       code2
       value
       date_time
-    ]
+    ].freeze
 
     def initialize(params)
       ATTRS.each do |attr|

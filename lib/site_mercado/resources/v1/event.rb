@@ -15,7 +15,7 @@ module SiteMercado
         body = if ids.is_a?(Array)
                  ids.map { |id| { id: id } }
                elsif ids.is_a?(Integer)
-                 [{ id: ids }]
+                 [id: ids]
                else
                  [{}]
                end
