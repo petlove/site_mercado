@@ -19,6 +19,8 @@ module SiteMercado
         transactions
       ].freeze
 
+      attr_reader(*ATTRS)
+
       def initialize(params)
         super(params, ATTRS, DICTIONARY)
 

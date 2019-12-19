@@ -27,6 +27,8 @@ module SiteMercado
         zipcode
       ].freeze
 
+      attr_reader(*ATTRS)
+
       def initialize(params)
         super(params)
 

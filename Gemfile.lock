@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    SiteMercado (0.1.0)
+    site_mercado (0.1.0)
       faraday
 
 GEM
@@ -77,7 +77,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  SiteMercado!
   bundler (~> 2.0.2)
   dotenv (~> 2.7.5)
   faker
@@ -87,6 +86,7 @@ DEPENDENCIES
   rubocop (>= 0.74.0)
   rubocop-performance (>= 1.4.1)
   simplecov (>= 0.17.0)
+  site_mercado!
   vcr (>= 5.0.0)
   webmock (>= 3.7.6)
 
