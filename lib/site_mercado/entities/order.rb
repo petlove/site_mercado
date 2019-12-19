@@ -24,6 +24,10 @@ module SiteMercado
         valorCorrigido: :recharge_value,
         plataforma: :platform
       }.freeze
+
+      def attributes
+        DICTIONARY
+      end
     end
   end
 end

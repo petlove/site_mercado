@@ -6,6 +6,7 @@ require 'support/configs/simple_cov_config'
 require 'dotenv'
 require "faker"
 require 'site_mercado'
+require 'pry'
 
 SimpleCovConfig.configure
 
