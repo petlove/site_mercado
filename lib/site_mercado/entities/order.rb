@@ -4,6 +4,7 @@ module SiteMercado
   module Entities
     class Order < Base
       DICTIONARY = {
+        codigo: :id,
         idLoja: :shop_id,
         codigoLoja: :shop_code,
         dataHora: :created_at,
@@ -26,6 +27,7 @@ module SiteMercado
       }.freeze
 
       ATTRS = %i[
+        id
         shop_id
         shop_code
         created_at
