@@ -23,12 +23,5 @@ module SiteMercado
         Client.post('/pedido/eventos/verificado', body)
       end
     end
-
-    def initialize(attr)
-      @id = attr.id
-      @order_id = attr.codigoPedido
-      @status = attr.status
-      @shop_id = attr.idLoja
-    end
   end
 end
