@@ -4,7 +4,7 @@ require 'bundler/setup'
 require 'simplecov'
 require 'support/configs/simple_cov_config'
 require 'dotenv'
-require "faker"
+require 'faker'
 require 'site_mercado'
 require 'pry'
 
@@ -18,7 +18,7 @@ VCRConfig.configure
 Dotenv.load
 
 RSpec.configure do |config|
-  config.example_status_persistence_file_path = ".rspec_status"
+  config.example_status_persistence_file_path = '.rspec_status'
 
   config.disable_monkey_patching!
 

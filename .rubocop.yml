@@ -21,8 +21,6 @@ AllCops:
   DisplayCopNames: true
 Style/FrozenStringLiteralComment:
   Enabled: false
-
-AllCops:
   Exclude:
     - 'bin/*'
     - 'spec/*'
