@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SiteMercado
   class Oauth
     attr_reader :access_token, :expires_in
@@ -13,7 +15,7 @@ module SiteMercado
     def token
       return access_token if access_token && !expired?
 
-      get_token
+      fetch_token
     end
 
     def expired?
@@ -22,7 +24,7 @@ module SiteMercado
 
     private
 
-    def get_token
+    def fetch_token
       response = Client.post('/oauth/token', credentials, auth: false)
       @token_type = response['token_type']
       @expires_in = Time.now + response['expires_in'].to_i
