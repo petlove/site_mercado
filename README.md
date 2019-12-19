@@ -1,3 +1,6 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/3f066fe89aa7ba5fa117/maintainability)](https://codeclimate.com/github/petlove/site_mercado/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/3f066fe89aa7ba5fa117/test_coverage)](https://codeclimate.com/github/petlove/site_mercado/test_coverage)
+
 # SiteMercado
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/site_mercado`. To experiment with that code, run `bin/console` for an interactive prompt.

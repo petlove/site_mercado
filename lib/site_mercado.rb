@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'site_mercado/version'
 require 'site_mercado/client'
 require 'site_mercado/configuration'
