@@ -16,8 +16,32 @@ module SiteMercado
         genero: :gender,
         telefoneCelular: :phone_number,
         telefoneFixo: :home_number,
-        enderecos: :address
+        enderecos: :addresses
       }.freeze
+
+      ATTRS = %i[
+        id
+        name
+        email
+        cpf
+        rg
+        type
+        public_email
+        public_sms
+        birthday
+        gender
+        phone_number
+        home_number
+        addresses
+      ].freeze
+
+      def initialize(params)
+        super(params, ATTRS, DICTIONARY)
+
+        @addresses = @addresses.map do |address|
+          SiteMercado::Entities::Address.new(OpenStruct.new(address))
+        end
+      end
     end
   end
 end
