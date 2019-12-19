@@ -2,8 +2,10 @@
 
 require 'bundler/setup'
 require 'site_mercado'
-require 'support/configs/simple_cov_config'
-require 'support/configs/vcr_config'
+
+Dir[File.expand_path(File.join(File.dirname(__FILE__), 'support', '**', '*.rb'))].sort.each do |f|
+  require f
+end
 
 SimpleCovConfig.configure
 VCRConfig.configure
