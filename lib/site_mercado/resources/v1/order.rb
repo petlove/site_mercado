@@ -1,7 +1,7 @@
 module SiteMercado
   class Order
     class << self
-      def find_order(code)
+      def find(code)
         SiteMercado::Entities::Order.new(Client.get("/pedido/#{code}"))
       end
 
