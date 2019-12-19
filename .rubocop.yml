@@ -25,3 +25,4 @@ Style/FrozenStringLiteralComment:
 AllCops:
   Exclude:
     - 'bin/*'
+    - 'spec/*'
