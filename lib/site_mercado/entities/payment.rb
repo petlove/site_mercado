@@ -2,7 +2,7 @@
 
 module SiteMercado
   module Entities
-    class Payment
+    class Payment < Base
       DICTIONARY = {
         id: :id,
         nome: :name,

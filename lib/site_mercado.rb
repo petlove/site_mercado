@@ -13,6 +13,7 @@ require 'site_mercado/entities/event'
 require 'site_mercado/entities/address'
 require 'site_mercado/entities/customer'
 require 'site_mercado/entities/order'
+require 'site_mercado/entities/payment'
 
 module SiteMercado
   class Error < StandardError; end
