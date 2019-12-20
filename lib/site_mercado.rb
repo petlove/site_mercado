@@ -14,6 +14,7 @@ require 'site_mercado/entities/address'
 require 'site_mercado/entities/customer'
 require 'site_mercado/entities/order'
 require 'site_mercado/entities/payment'
+require 'site_mercado/entities/item'
 
 module SiteMercado
   class Error < StandardError; end
