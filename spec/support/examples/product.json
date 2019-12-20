@@ -1,0 +1,19 @@
+{
+  "seller_id": "123",
+  "departament": "Cachorro",
+  "category": "Medicina e Saúde",
+  "subcategory": "Vermífugos",
+  "brand": "Drontal",
+  "measure": "uni",
+  "volume": "0.013",
+  "barcode": "7891106005708",
+  "full_name": "Drontal Plus Sabor Carne Cães 10 Kg - 4 Comprimidos",
+  "list_price": "40.49",
+  "price": "40.49",
+  "total_prime": "44",
+  "stock_minimun": "0",
+  "description": "O <strong>Vermífugo Bayer Drontal Plus Sabor Carne - Cães 10 Kg</strong> é indicado para o tratamento e controle das verminoses intestinais e de giardíase em cães, apresentando excelentes resultando contra parasitas cestoides (vermes chatos), nematódeos (vermes redondos) e protozoários. <br><br> *Consulte sempre o medico Veterinário de sua confiança para o uso apropriado deste medicamento. Leia a bula ou informações descritas na embalagem.",
+  "active": "true",
+  "sku": "31023660-2",
+  "validation": "false"
+}

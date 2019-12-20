@@ -4,52 +4,52 @@ module SiteMercado
   module Entities
     class Product < Base
       DICTIONARY = {
-        idLoja: :seller_id,
-        departamento: :department,
-        categoria: :category,
-        subCategoria: :subcategory,
-        marca: :brand,
-        unidade: :measure,
+        seller_id: :idLoja,
+        department: :departamento,
+        category: :categoria,
+        subcategory: :subCategoria,
+        brand: :marca,
+        measure: :unidade,
         volume: :volume,
-        codigoBarra: :barcode,
-        nome: :full_name,
-        valor: :list_price,
-        valorPromocao: :price,
-        quantidadeEstoqueAtual: :total_prime,
-        quantidadeEstoqueMinimo: :stock_minimun,
-        descricao: :description,
-        ativo: :active,
-        plu: :sku,
+        barcode: :codigoBarra,
+        full_name: :nome,
+        list_price: :valor,
+        price: :valorPromocao,
+        total_prime: :quantidadeEstoqueAtual,
+        stock_minimun: :quantidadeEstoqueMinimo,
+        description: :descricao,
+        active: :ativo,
+        sku: :plu,
         validadeProxima: :validation
       }.freeze
 
       ATTRS = %i[
-        seller_id
-        department
-        category
-        subcategory
-        brand
-        measure
+        idLoja
+        departamento
+        categoria
+        subCategoria
+        marca
+        unidade
         volume
-        barcode
-        full_name
-        list_price
-        price
-        total_prime
-        stock_minimun
-        description
-        active
-        sku
+        codigoBarra
+        nome
+        valor
+        valorPromocao
+        quantidadeEstoqueAtual
+        quantidadeEstoqueMinimo
+        descricao
+        ativo
+        plu
         validation
       ].freeze
 
       attr_reader(*ATTRS)
 
       def initialize(params)
-        super(params, ATTRS, DICTIONARY)
-
-        @products = @products.map do |address|
-          SiteMercado::Entities::Product.new(OpenStruct.new(address))
+        ATTRS.each do |attr|
+          translated = DICTIONARY.key(attr)
+          value = params.send(translated) if translated
+          instance_variable_set("@#{attr}", value) if value
         end
       end
     end
