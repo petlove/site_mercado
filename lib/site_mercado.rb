@@ -15,6 +15,7 @@ require 'site_mercado/entities/customer'
 require 'site_mercado/entities/order'
 require 'site_mercado/entities/payment'
 require 'site_mercado/entities/item'
+require 'site_mercado/entities/product'
 
 require 'site_mercado/helpers/order_parser'
 
