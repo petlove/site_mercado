@@ -5,9 +5,6 @@ require 'site_mercado/client'
 require 'site_mercado/configuration'
 require 'site_mercado/oauth'
 
-require 'site_mercado/resources/v1/event'
-require 'site_mercado/resources/v1/order'
-
 require 'site_mercado/entities/base'
 require 'site_mercado/entities/event'
 require 'site_mercado/entities/address'
@@ -16,6 +13,10 @@ require 'site_mercado/entities/order'
 require 'site_mercado/entities/payment'
 require 'site_mercado/entities/item'
 require 'site_mercado/entities/product'
+
+require 'site_mercado/resources/v1/event'
+require 'site_mercado/resources/v1/product'
+require 'site_mercado/resources/v1/order'
 
 require 'site_mercado/helpers/order_parser'
 
