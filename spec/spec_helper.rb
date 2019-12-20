@@ -3,12 +3,12 @@
 require 'bundler/setup'
 require 'simplecov'
 require 'support/configs/simple_cov_config'
+SimpleCovConfig.configure
+
 require 'dotenv'
 require 'faker'
 require 'site_mercado'
 require 'pry'
-
-SimpleCovConfig.configure
 
 Dir[File.expand_path(File.join(File.dirname(__FILE__), 'support', '**', '*.rb'))].sort.each do |f|
   require f
