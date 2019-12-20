@@ -15,12 +15,12 @@ module SiteMercado
         cpfNaNota: :cpf_note,
         quantidadeItemUnico: :uniq_items,
         valorMercado: :market_value,
-        valorConveniencia: :convenience_value,
-        valorEntrega: :delivery_value,
-        valorRetirada: :withdrawal_value,
-        valorTroco: :change_value,
-        valorDesconto: :descount_value,
-        valorTotal: :total_value,
+        valorConveniencia: :interest_cost,
+        valorEntrega: :shipping_cost,
+        valorRetirada: :withdrawal_cost,
+        valorTroco: :change,
+        valorDesconto: :discount,
+        valorTotal: :total,
         valorCorrigido: :recharge_value,
         plataforma: :platform,
         cliente: :customer,
@@ -41,12 +41,12 @@ module SiteMercado
         cpf_note
         uniq_items
         market_value
-        convenience_value
-        delivery_value
-        withdrawal_value
-        change_value
-        descount_value
-        total_value
+        convenience_cost
+        shipping_cost
+        withdrawal_cost
+        change
+        discount
+        total
         recharge_value
         platform
         customer
