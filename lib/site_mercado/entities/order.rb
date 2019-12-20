@@ -20,7 +20,7 @@ module SiteMercado
         valorRetirada: :withdrawal_cost,
         valorTroco: :change,
         valorDesconto: :discount,
-        valorTotal: :total,
+        valorTotal: :total_value,
         valorCorrigido: :recharge_value,
         plataforma: :platform,
         cliente: :customer,
@@ -46,7 +46,7 @@ module SiteMercado
         withdrawal_cost
         change
         discount
-        total
+        total_value
         recharge_value
         platform
         customer
