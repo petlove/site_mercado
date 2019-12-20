@@ -13,7 +13,7 @@ module SiteMercado
         order_id
         status
         shop_id
-      ]
+      ].freeze
 
       attr_reader(*ATTRS)
 

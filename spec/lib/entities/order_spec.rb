@@ -20,5 +20,7 @@ RSpec.describe SiteMercado::Entities::Order do
     valorTotal
     valorCorrigido
     plataforma
+    cliente
+    codigo
   ]
 end
