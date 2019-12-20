@@ -23,7 +23,8 @@ module SiteMercado
         valorTotal: :total_value,
         valorCorrigido: :recharge_value,
         plataforma: :platform,
-        cliente: :customer
+        cliente: :customer,
+        pagamentos: :payments
       }.freeze
 
       ATTRS = %i[
@@ -47,6 +48,7 @@ module SiteMercado
         recharge_value
         platform
         customer
+        payments
       ].freeze
 
       attr_reader(*ATTRS)
@@ -55,6 +57,9 @@ module SiteMercado
         super(params, ATTRS, DICTIONARY)
 
         @customer = SiteMercado::Entities::Customer.new(OpenStruct.new(@customer))
+        @payments = @payments.map do |payment|
+          SiteMercado::Entities::Payment.new(OpenStruct.new(payment))
+        end
       end
     end
   end
