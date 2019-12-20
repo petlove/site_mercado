@@ -41,7 +41,7 @@ module SiteMercado
         cpf_note
         uniq_items
         market_value
-        convenience_cost
+        interest_cost
         shipping_cost
         withdrawal_cost
         change
