@@ -67,7 +67,10 @@ module SiteMercado
         @items = @items.map do |item|
           SiteMercado::Entities::Item.new(OpenStruct.new(item))
         end
-        @encoded_id = SiteMercado::Helpers::OrderParser.encode_id(@id)
+      end
+
+      def encoded_id
+        SiteMercado::Helpers::OrderParser.encode_id(id)
       end
     end
   end
