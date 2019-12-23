@@ -4,10 +4,11 @@ module SiteMercado
   class Product
     class << self
       def post(body)
-        Client.post(
-          '/produtointegracao',
-          SiteMercado::Entities::Product.new(body)
-        )
+        products = [body].flatten.map do |product|
+          SiteMercado::Entities::Product.new(product).attributes
+        end
+
+        Client.post('/produtointegracao', products.to_json)
       end
     end
   end

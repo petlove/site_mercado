@@ -20,7 +20,7 @@ module SiteMercado
         description: :descricao,
         active: :ativo,
         sku: :plu,
-        validadeProxima: :validation
+        validation: :validadeProxima
       }.freeze
 
       ATTRS = %i[
@@ -46,11 +46,12 @@ module SiteMercado
       attr_reader(*ATTRS)
 
       def initialize(params)
-        ATTRS.each do |attr|
-          translated = DICTIONARY.key(attr)
-          value = params.send(translated) if translated
+        ATTRS.map do |attr|
+          value = params.dig(DICTIONARY.key(attr))
           instance_variable_set("@#{attr}", value) if value
         end
+
+        attributes
       end
     end
   end
