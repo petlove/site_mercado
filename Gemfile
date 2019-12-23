@@ -2,5 +2,9 @@
 
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in site_mercado.gemspec
+group :test do
+  gem 'faker'
+  gem 'rspec'
+end
+
 gemspec
