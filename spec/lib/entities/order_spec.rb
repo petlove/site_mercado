@@ -2,6 +2,7 @@ require 'spec_helper'
 
 RSpec.describe SiteMercado::Entities::Order do
   it_behaves_like 'entity_attributes', %i[
+    codigo
     idLoja
     codigoLoja
     dataHora
@@ -21,6 +22,8 @@ RSpec.describe SiteMercado::Entities::Order do
     valorCorrigido
     plataforma
     cliente
-    codigo
+    enderecoEntrega
+    pagamentos
+    items
   ]
 end
