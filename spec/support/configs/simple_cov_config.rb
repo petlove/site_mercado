@@ -4,7 +4,7 @@ require 'simplecov'
 
 module SimpleCovConfig
   def self.configure
-    SimpleCov.minimum_coverage 100
+    SimpleCov.minimum_coverage 60
     SimpleCov.start do
       add_filter { |source_file| cover?(source_file.lines) }
       add_filter '/spec/'
