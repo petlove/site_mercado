@@ -37,7 +37,7 @@ module SiteMercado
         total
         available
         removed
-      ]
+      ].freeze
 
       attr_reader(*ATTRS)
 
