@@ -78,10 +78,6 @@ RSpec.describe SiteMercado::Oauth do
         is_expected.to eq(access_token)
         is_expected.not_to eq(response['access_token'])
       end
-
-      it 'returns new access_token' do
-        is_expected.to eq(response['access_token'])
-      end
     end
   end
 
