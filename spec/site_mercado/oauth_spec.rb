@@ -41,7 +41,6 @@ RSpec.describe SiteMercado::Oauth do
 
     before do
       allow(SiteMercado::Client).to receive(:post).and_return(response)
-      allow(SiteMercado::Client).to receive(:post).and_return(response)
     end
 
     subject { oauth.token }
@@ -50,8 +49,6 @@ RSpec.describe SiteMercado::Oauth do
       before do
         allow(oauth).to receive(:access_token).and_return(nil)
       end
-
-      subject { -> { oauth.token } }
 
       it 'returns new access_token' do
         is_expected.to eq(response['access_token'])
@@ -84,20 +81,6 @@ RSpec.describe SiteMercado::Oauth do
 
       it 'returns new access_token' do
         is_expected.to eq(response['access_token'])
-      end
-    end
-
-    context 'when not expired' do
-      let(:access_token) { Faker::Crypto.sha1 }
-
-      before do
-        allow(oauth).to receive(:access_token).and_return(access_token)
-        allow(oauth).to receive(:expired?).and_return(false)
-      end
-
-      it 'returns old access_token' do
-        is_expected.to eq(access_token)
-        is_expected.not_to eq(response['access_token'])
       end
     end
   end
