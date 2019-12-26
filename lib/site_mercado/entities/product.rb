@@ -20,7 +20,7 @@ module SiteMercado
         description: :descricao,
         active: :ativo,
         sku: :plu,
-        validation: :validadeProxima
+        expiration_date: :validadeProxima
       }.freeze
 
       ATTRS = %i[
@@ -40,7 +40,7 @@ module SiteMercado
         descricao
         ativo
         plu
-        validation
+        validadeProxima
       ].freeze
 
       attr_reader(*ATTRS)
