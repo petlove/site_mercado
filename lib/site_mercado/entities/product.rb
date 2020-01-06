@@ -13,14 +13,13 @@ module SiteMercado
         volume: :volume,
         barcode: :codigoBarra,
         full_name: :nome,
-        list_price: :valor,
-        price: :valorPromocao,
-        total_prime: :quantidadeEstoqueAtual,
+        price: :valor,
+        stock_total: :quantidadeEstoqueAtual,
         stock_minimun: :quantidadeEstoqueMinimo,
         description: :descricao,
         active: :ativo,
         sku: :plu,
-        expiration_date: :validadeProxima
+        close_validy: :validadeProxima
       }.freeze
 
       ATTRS = %i[
