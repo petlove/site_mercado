@@ -5,6 +5,10 @@ require 'site_mercado/client'
 require 'site_mercado/configuration'
 require 'site_mercado/oauth'
 
+require 'site_mercado/resources/v1/base'
+require 'site_mercado/resources/v1/event'
+require 'site_mercado/resources/v1/order'
+
 require 'site_mercado/entities/base'
 require 'site_mercado/entities/event'
 require 'site_mercado/entities/address'
@@ -18,11 +22,14 @@ require 'site_mercado/resources/v1/event'
 require 'site_mercado/resources/v1/product'
 require 'site_mercado/resources/v1/order'
 
+require 'site_mercado/resources/v1/errors/bad_request_error'
+require 'site_mercado/resources/v1/errors/unautorized_error'
+require 'site_mercado/resources/v1/errors/unknown_status_error'
+require 'site_mercado/resources/v1/errors/precondition_failed_error'
+
 require 'site_mercado/helpers/order_parser'
 
 module SiteMercado
-  class Error < StandardError; end
-
   class << self
     def configuration
       @configuration ||= Configuration.new

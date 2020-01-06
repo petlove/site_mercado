@@ -40,8 +40,8 @@ module SiteMercado
       def initialize(params)
         super(params, ATTRS, DICTIONARY)
 
-        @addresses = @addresses.map do |address|
-          SiteMercado::Entities::Address.new(OpenStruct.new(address))
+        @addresses = @addresses&.map do |address|
+          SiteMercado::Entities::Address.new(address)
         end
       end
     end

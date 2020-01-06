@@ -5,11 +5,11 @@ module SiteMercado
     attr_reader :access_token, :expires_in
 
     def client_id
-      @client_id ||= SiteMercado.configuration.client_id
+      @client_id ||= SiteMercado.configuration.client_id || ENV['SITEMERCADO_CLIENT_ID']
     end
 
     def client_secret
-      @client_secret ||= SiteMercado.configuration.client_secret
+      @client_secret ||= SiteMercado.configuration.client_secret || ENV['SITEMERCADO_CLIENT_SECRET']
     end
 
     def token
@@ -25,7 +25,7 @@ module SiteMercado
     private
 
     def fetch_token
-      response = Client.post('/oauth/token', credentials, auth: false)
+      response = Client.post('/oauth/token', body: credentials, auth: false)
       @token_type = response['token_type']
       @expires_in = Time.now + response['expires_in'].to_i
       @access_token = response['access_token']

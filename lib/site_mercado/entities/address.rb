@@ -30,13 +30,7 @@ module SiteMercado
       attr_reader(*ATTRS)
 
       def initialize(params)
-        super(params)
-
-        @addresses = @addresses.map do |address|
-          SiteMercado::Entities::Address.new(
-            OpenStruct.new(address)
-          )
-        end
+        super(params, ATTRS, DICTIONARY)
       end
     end
   end

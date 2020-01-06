@@ -9,6 +9,7 @@ require 'dotenv'
 require 'faker'
 require 'site_mercado'
 require 'pry'
+require 'factory_bot'
 
 Dir[File.expand_path(File.join(File.dirname(__FILE__), 'support', '**', '*.rb'))].sort.each do |f|
   require f
@@ -27,4 +28,18 @@ RSpec.configure do |config|
   end
 
   config.include DocumentMacros
+  config.include FactoryBot::Syntax::Methods
+
+  config.before(:suite) do
+    FactoryBot.find_definitions
+  end
+
+  config.before do |example|
+    if example.metadata[:vcr]
+      SiteMercado.config do |c|
+        c.client_id = ENV['SITEMERCADO_CLIENT_ID']
+        c.client_secret = ENV['SITEMERCADO_CLIENT_SECRET']
+      end
+    end
+  end
 end

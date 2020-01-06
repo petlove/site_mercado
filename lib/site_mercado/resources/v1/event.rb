@@ -1,5 +1,5 @@
 module SiteMercado
-  class Event
+  class Event < Base
     attr_reader :id, :order_id, :status, :shop_id
 
     class << self
@@ -18,7 +18,7 @@ module SiteMercado
       def check_event(ids)
         body = if ids.is_a?(Array)
                  ids.map { |id| { id: id } }
-               elsif ids.is_a?(Integer)
+               elsif ids.is_a?(Integer) || ids.is_a?(String)
                  [id: ids]
                else
                  [{}]
