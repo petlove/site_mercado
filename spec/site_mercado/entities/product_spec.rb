@@ -8,7 +8,7 @@ RSpec.describe SiteMercado::Entities::Product do
     subcategory
     brand
     measure
-    volume
+    weight
     barcode
     full_name
     price

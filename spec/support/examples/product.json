@@ -9,12 +9,11 @@
     "seller_id": "123456",
     "sku": "00023660-2",
     "subcategory": "Verm\u00edfugos",
-
     "list_price": "1.50",
     "measure": "uni",
     "price": "1.49",
     "stock_minimun": "0",
     "stock_total": "4141",
     "close_validy": "false",
-    "volume": "0.013"
+    "weight": "0.013"
 }

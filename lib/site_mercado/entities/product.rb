@@ -10,7 +10,7 @@ module SiteMercado
         subcategory: :subCategoria,
         brand: :marca,
         measure: :unidade,
-        volume: :volume,
+        weight: :volume,
         barcode: :codigoBarra,
         full_name: :nome,
         price: :valor,
