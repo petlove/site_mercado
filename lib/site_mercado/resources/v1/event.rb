@@ -24,7 +24,7 @@ module SiteMercado
                  [{}]
                end
 
-        Client.post('/pedido/eventos/verificado', body)
+        Client.post('/pedido/eventos/verificado', body: body)
       end
     end
   end
