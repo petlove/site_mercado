@@ -31,13 +31,37 @@ end
 
 if ARGV.include?('order')
   id = ARGV[1]
+  encoded = ARGV.include?('-e')
 
   if id
     ap "Order #{id}"
-    order = SiteMercado::Order.find(id)
+
+    order = if encoded
+              SiteMercado::Order.find_by_encoded(id)
+            else
+              SiteMercado::Order.find(id)
+            end
     ap(order, raw: true)
   else
     ap 'No ID given!'
+  end
+end
+
+if ARGV.include?('encode')
+  id = ARGV[1]
+
+  if id
+    ap "Encoding id #{id}"
+    ap SiteMercado::Helpers::OrderParser.encode_id(id)
+  end
+end
+
+if ARGV.include?('decode')
+  id = ARGV[1]
+
+  if id
+    ap "Decoding id #{id}"
+    ap SiteMercado::Helpers::OrderParser.decode_id(id)
   end
 end
 

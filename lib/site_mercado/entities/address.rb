@@ -8,7 +8,7 @@ module SiteMercado
         logradouro: :public_space,
         numero: :number,
         complemento: :complement,
-        bairro: :neigborhood,
+        bairro: :neighborhood,
         cidade: :city,
         uf: :uf,
         estado: :state,
@@ -20,7 +20,7 @@ module SiteMercado
         public_space
         number
         complement
-        neigborhood
+        neighborhood
         city
         uf
         state

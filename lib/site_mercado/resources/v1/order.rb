@@ -5,6 +5,11 @@ module SiteMercado
         SiteMercado::Entities::Order.new(Client.get("/pedido/#{code}"))
       end
 
+      def find_by_encoded(code)
+        decoded = SiteMercado::Helpers::OrderParser.decode_id(code)
+        SiteMercado::Entities::Order.new(Client.get("/pedido/#{decoded}"))
+      end
+
       def in_separation(code)
         Client.put("/pedido/#{code}/status/em_separacao")
       end
