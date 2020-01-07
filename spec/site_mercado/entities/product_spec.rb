@@ -8,17 +8,16 @@ RSpec.describe SiteMercado::Entities::Product do
     subcategory
     brand
     measure
-    volume
+    weight
     barcode
     full_name
-    list_price
     price
-    total_prime
+    stock_total
     stock_minimun
     description
     active
     sku
-    expiration_date
+    close_validy
   ]
 
   describe '#initialize' do
@@ -54,8 +53,7 @@ RSpec.describe SiteMercado::Entities::Product do
         subCategoria: 'Vermífugos',
         unidade: 'uni',
         validadeProxima: 'false',
-        valor: '1.50',
-        valorPromocao: '1.49',
+        valor: '1.49',
         volume: '0.013'
       )
     end
