@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    site_mercado (0.1.1)
+    site_mercado (0.1.2)
       faraday
 
 GEM
