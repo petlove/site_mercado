@@ -7,7 +7,9 @@ RSpec.describe SiteMercado::Product do
     subject { described_class.post(payload) }
 
     it 'returns success when payload is valid' do
-      expect(SiteMercado::Client).to receive(:post).once.with('/produtointegracao', anything)
+      expect(
+        SiteMercado::Client
+      ).to receive(:post).once.with('/produtointegracao', body: anything)
 
       subject
     end

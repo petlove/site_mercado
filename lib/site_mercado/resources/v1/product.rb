@@ -8,7 +8,7 @@ module SiteMercado
           SiteMercado::Entities::Product.new(product).attributes
         end
 
-        Client.post('/produtointegracao', products)
+        Client.post('/produtointegracao', body: products)
       end
     end
   end
