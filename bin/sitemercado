@@ -7,8 +7,8 @@ require 'pry'
 require 'awesome_print'
 
 SiteMercado.config do |config|
-  config.client_id = ENV['SITEMERCADO_CLIENT_ID']
-  config.client_secret = ENV['SITEMERCADO_CLIENT_SECRET']
+  config.client_id = ENV.fetch('SITEMERCADO_CLIENT_ID')
+  config.client_secret = ENV.fetch('SITEMERCADO_CLIENT_SECRET')
 end
 
 if ARGV.include?('events')
