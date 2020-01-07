@@ -5,7 +5,6 @@ require 'site_mercado/client'
 require 'site_mercado/configuration'
 require 'site_mercado/oauth'
 
-require 'site_mercado/resources/v1/base'
 require 'site_mercado/resources/v1/event'
 require 'site_mercado/resources/v1/order'
 

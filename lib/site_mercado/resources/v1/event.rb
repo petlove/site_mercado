@@ -1,5 +1,5 @@
 module SiteMercado
-  class Event < Base
+  class Event
     attr_reader :id, :order_id, :status, :shop_id
 
     class << self
