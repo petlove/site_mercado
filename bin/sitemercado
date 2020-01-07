@@ -1,0 +1,114 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'site_mercado'
+require 'irb'
+require 'pry'
+require 'awesome_print'
+
+SiteMercado.config do |config|
+  config.client_id = ENV.fetch('SITEMERCADO_CLIENT_ID')
+  config.client_secret = ENV.fetch('SITEMERCADO_CLIENT_SECRET')
+end
+
+if ARGV.include?('events')
+  ap 'All Events'
+  events = SiteMercado::Event.all
+  ap events
+end
+
+if ARGV.include?('check_event')
+  id = ARGV[1]
+
+  if id
+    ap "Check Event #{id}"
+    check_ids = SiteMercado::Event.check_event(id)
+    ap check_ids
+  else
+    ap 'No ID given!'
+  end
+end
+
+if ARGV.include?('order')
+  id = ARGV[1]
+  encoded = ARGV.include?('-e')
+
+  if id
+    ap "Order #{id}"
+
+    order = if encoded
+              SiteMercado::Order.find_by_encoded(id)
+            else
+              SiteMercado::Order.find(id)
+            end
+    ap(order, raw: true)
+  else
+    ap 'No ID given!'
+  end
+end
+
+if ARGV.include?('encode')
+  id = ARGV[1]
+
+  if id
+    ap "Encoding id #{id}"
+    ap SiteMercado::Helpers::OrderParser.encode_id(id)
+  end
+end
+
+if ARGV.include?('decode')
+  id = ARGV[1]
+
+  if id
+    ap "Decoding id #{id}"
+    ap SiteMercado::Helpers::OrderParser.decode_id(id)
+  end
+end
+
+if ARGV.include?('in_separation')
+  id = ARGV[1]
+
+  if id
+    ap "In Separation #{id}"
+    in_separation = SiteMercado::Order.in_separation(id)
+    ap in_separation
+  else
+    ap 'No ID given!'
+  end
+end
+
+if ARGV.include?('separated')
+  id = ARGV[1]
+  separator = ARGV[2]
+  amount_cold_bag = ARGV[3]
+  amount_dry_bag = ARGV[4]
+  total_value = ARGV[5]
+
+  if id && separator
+    ap "Separated #{id}"
+    params = {
+      separator: separator,
+      amount_cold_bag: amount_cold_bag,
+      amount_dry_bag: amount_dry_bag,
+      total_value: total_value
+    }
+    separated = SiteMercado::Order.separated(id, params)
+    ap separated
+  else
+    ap 'No ID or separator given!'
+  end
+end
+
+if ARGV.include?('cancel')
+  id = ARGV[1]
+  message = ARGV[2]
+
+  if id
+    ap "Cancel #{id}"
+    params = { message: message }
+    cancel = SiteMercado::Order.cancel(id, params)
+    ap cancel
+  else
+    ap 'No ID given!'
+  end
+end

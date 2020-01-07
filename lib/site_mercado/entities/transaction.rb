@@ -23,11 +23,7 @@ module SiteMercado
     ].freeze
 
     def initialize(params)
-      ATTRS.each do |attr|
-        translated = DICTIONARY.key(attr)
-        value = params.send(translated) if translated
-        instance_variable_set("@#{attr}", value) if value
-      end
+      super(params, ATTRS, DICTIONARY)
     end
   end
 end

@@ -2,93 +2,55 @@
 
 require 'faraday'
 require 'json'
+require 'oj'
 
 module SiteMercado
-  class StatusUnknownError < StandardError; end
-  class UnauthorizedError < StandardError; end
-  class PreconditionFailedError < StandardError; end
-
   class Client
     class << self
-      def api_version
-        ENV['API_VERSION'] || '/api/v1/'
-      end
-
-      def endpoint
-        ENV['SITEMERCADO_URL'] || base_url
-      end
-
-      def base_url
-        'https://service.sitemercado.com.br/'
-      end
-
-      def get(path, params = {}, auth: true)
-        rescues do
-          response = connection.get do |request|
-            request.url "#{api_version}#{path}"
+      def request(path, params: {}, body: {}, auth: true)
+        handle_request do
+          connection.public_send(__callee__) do |request|
+            request.url "#{api_version}/#{path}"
+            request.headers[:authorization] = "Bearer #{token}" if auth
+            request.body = body.to_json
             request.params = params
-            request.headers.merge!('authorization': "Bearer #{token}") if auth
           end
-          status = response.status
-
-          parser_status(status)
-          parser(response.body, status)
         end
       end
 
-      def post(path, body = {}, auth: true)
-        rescues do
-          response = connection.post do |request|
-            request.url "#{api_version}#{path}"
-            request.headers[:authorization] = "Bearer #{token}" if auth
-            request.body = body.to_json
-          end
-
-          status = parser_status(response.status)
-          parser(response.body, status)
-        end
-      end
-
-      def put(path, body = {}, auth: true)
-        rescues do
-          response = connection.put do |request|
-            request.url "#{api_version}#{path}"
-            request.headers[:authorization] = "Bearer #{token}" if auth
-            request.body = body.to_json
-          end
-
-          status = parser_status(response.status)
-          parser(response.body, status)
-        end
-      end
+      alias get request
+      alias put request
+      alias post request
+      alias patch request
+      alias delete request
 
       private
 
-      def parser_status(status)
-        case status
-        when 200, 201, 202
-          :ok
-        when 204
-          :no_content
+      def handle_request
+        response = yield
+        return Oj.load(response.body) if response.success?
+
+        handle_error(response)
+      end
+
+      def handle_error(response)
+        case response.status
+        when 400
+          raise BadRequestError.new(response)
         when 401
-          raise UnauthorizedError, 'Unauthorized'
+          raise UnauthorizedError.new(response)
         when 412
-          raise PreconditionFailedError, 'Invalid State'
+          raise PreconditionFailedError.new(response)
         else
-          raise StatusUnknownError, 'Status unknown'
+          raise UnknownStatusError.new(response)
         end
       end
 
-      def rescues(&block)
-        instance_exec(&block)
-      rescue JSON::ParserError
-        OpenStruct.new(status: 'parser_error')
-      rescue StatusUnknownError
-        OpenStruct.new(error: 'status_unknown')
-      rescue UnauthorizedError
-        OpenStruct.new(error: 'unauthorized')
-      rescue PreconditionFailedError
-        OpenStruct.new(error: 'precondition_failed')
+      def connection
+        @connection ||= Faraday.new(
+          url: endpoint,
+          headers: default_headers
+        )
       end
 
       def default_headers
@@ -102,24 +64,12 @@ module SiteMercado
         SiteMercado.oauth.token
       end
 
-      def parser(json, status)
-        return { status: :no_content } if no_content?(json, status)
-
-        parsed = JSON.parse(json)
-        return OpenStruct.new(parsed) if parsed.is_a?(Hash)
-
-        parsed.map { |parse| OpenStruct.new(parse) }
+      def api_version
+        SiteMercado.configuration.api_version
       end
 
-      def no_content?(json, status)
-        json.empty? && status == :no_content
-      end
-
-      def connection
-        @connection ||= Faraday.new(
-          url: endpoint,
-          headers: default_headers
-        )
+      def endpoint
+        SiteMercado.configuration.endpoint
       end
     end
   end

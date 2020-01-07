@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://service.sitemercado.com.br/api/v1///oauth/token
+    body:
+      encoding: UTF-8
+      string: '{"client_id":"4ccda8c3-06cc-4036-bfce-102a0c3f9530","client_secret":"123"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.17.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Kestrel
+      Request-Context:
+      - appId=cid-v1:637f4599-a9ed-42d2-b5f7-95591a9badf2
+      Date:
+      - Mon, 06 Jan 2020 22:05:18 GMT
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_client","error_description":"AADSTS7000215: Invalid
+        client secret is provided.\r\nTrace ID: fff64dde-e1d7-4d59-83a8-08da33113c00\r\nCorrelation
+        ID: 449fab02-46af-4b22-9aeb-e9132bd3f137\r\nTimestamp: 2020-01-06 22:05:18Z"}'
+    http_version: 
+  recorded_at: Mon, 06 Jan 2020 22:05:18 GMT
+recorded_with: VCR 5.0.0

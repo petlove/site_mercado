@@ -8,7 +8,7 @@ module SiteMercado
         logradouro: :public_space,
         numero: :number,
         complemento: :complement,
-        bairro: :neigborhood,
+        bairro: :neighborhood,
         cidade: :city,
         uf: :uf,
         estado: :state,
@@ -20,7 +20,7 @@ module SiteMercado
         public_space
         number
         complement
-        neigborhood
+        neighborhood
         city
         uf
         state
@@ -30,13 +30,7 @@ module SiteMercado
       attr_reader(*ATTRS)
 
       def initialize(params)
-        super(params)
-
-        @addresses = @addresses.map do |address|
-          SiteMercado::Entities::Address.new(
-            OpenStruct.new(address)
-          )
-        end
+        super(params, ATTRS, DICTIONARY)
       end
     end
   end

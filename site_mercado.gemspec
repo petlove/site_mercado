@@ -11,15 +11,19 @@ Gem::Specification.new do |spec|
   spec.email         = ['tecnologia@petlove.com.br']
 
   spec.licenses      = ['MIT']
-  spec.summary       = 'Simple integration with Site Mercado API'
-  spec.description   = 'Simple integration with Site Mercado API'
+  spec.summary       = 'Integration with SiteMercado API'
+  spec.description   = 'Supporting gem for comunication with SiteMercado API'
   spec.homepage      = 'https://github.com/petlove/site_mercado'
 
-  spec.files = Dir['{lib}/**/*', 'CHANGELOG.md', 'MIT-LICENSE', 'README.md']
+  spec.files = Dir['{lib}/**/*', 'bon/sitemercado', 'CHANGELOG.md', 'MIT-LICENSE', 'README.md']
+  spec.bindir = 'bin'
+  spec.executable = 'sitemercado'
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.6.5'
 
+  spec.add_runtime_dependency 'awesome_print'
   spec.add_runtime_dependency 'faraday'
+  spec.add_runtime_dependency 'oj'
 
   spec.add_development_dependency 'bundler', '~> 2.0.2'
   spec.add_development_dependency 'dotenv', '~> 2.7.5'

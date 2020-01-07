@@ -25,7 +25,7 @@ module SiteMercado
         super(params, ATTRS, DICTIONARY)
 
         @transactions = @transactions.map do |transaction|
-          SiteMercado::Transaction.new(OpenStruct.new(transaction))
+          SiteMercado::Transaction.new(transaction)
         end
       end
     end

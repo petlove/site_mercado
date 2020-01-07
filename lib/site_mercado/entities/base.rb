@@ -6,7 +6,7 @@ module SiteMercado
       def initialize(params, attrs, dictionary)
         attrs.each do |attr|
           translated = dictionary.key(attr)
-          value = params.send(translated) if translated
+          value = params[translated.to_s] if translated
           instance_variable_set("@#{attr}", value) if value
         end
       end

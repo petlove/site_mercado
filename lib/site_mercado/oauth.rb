@@ -25,7 +25,7 @@ module SiteMercado
     private
 
     def fetch_token
-      response = Client.post('/oauth/token', credentials, auth: false)
+      response = Client.post('/oauth/token', body: credentials, auth: false)
       @token_type = response['token_type']
       @expires_in = Time.now + response['expires_in'].to_i
       @access_token = response['access_token']

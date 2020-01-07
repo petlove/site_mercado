@@ -60,12 +60,18 @@ module SiteMercado
       def initialize(params)
         super(params, ATTRS, DICTIONARY)
 
-        @customer = SiteMercado::Entities::Customer.new(OpenStruct.new(@customer))
-        @payments = @payments.map do |payment|
-          SiteMercado::Entities::Payment.new(OpenStruct.new(payment))
+        @customer = SiteMercado::Entities::Customer.new(@customer)
+
+        @payments = @payments&.map do |payment|
+          SiteMercado::Entities::Payment.new(payment)
         end
-        @items = @items.map do |item|
-          SiteMercado::Entities::Item.new(OpenStruct.new(item))
+
+        @items = @items&.map do |item|
+          SiteMercado::Entities::Item.new(item)
+        end
+
+        @ship_address = @ship_address&.map do |address|
+          SiteMercado::Entities::Address.new(address)
         end
       end
 

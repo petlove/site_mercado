@@ -9,6 +9,9 @@ Naming/AccessorMethodName:
 Style/Documentation:
   Enabled: false
 
+Style/RaiseArgs:
+  Enabled: false
+
 Metrics/BlockLength:
   Max: 30
   Exclude:
