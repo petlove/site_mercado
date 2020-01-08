@@ -9,6 +9,10 @@ Naming/AccessorMethodName:
 Style/Documentation:
   Enabled: false
 
+Style/IfUnlessModifier:
+  Exclude:
+    - 'bin/*'
+
 Style/RaiseArgs:
   Enabled: false
 
