@@ -60,7 +60,7 @@ module SiteMercado
       def initialize(params)
         super(params, ATTRS, DICTIONARY)
 
-        @customer = SiteMercado::Entities::Customer.new(@customer)
+        @customer = SiteMercado::Entities::Customer.new(@customer) if @customer
 
         @payments = @payments&.map do |payment|
           SiteMercado::Entities::Payment.new(payment)
@@ -77,6 +77,18 @@ module SiteMercado
 
       def encoded_id
         SiteMercado::Helpers::OrderParser.encode_id(id)
+      end
+
+      def total_payments
+        payments&.map(&:value)&.sum.to_f
+      end
+
+      def offline_payments?
+        payments.select(&:offline?).any?
+      end
+
+      def online_payments?
+        payments.select(&:online?).any?
       end
     end
   end

@@ -24,9 +24,17 @@ module SiteMercado
       def initialize(params)
         super(params, ATTRS, DICTIONARY)
 
-        @transactions = @transactions.map do |transaction|
+        @transactions = @transactions&.map do |transaction|
           SiteMercado::Transaction.new(transaction)
         end
+      end
+
+      def offline?
+        type.casecmp('offline').zero?
+      end
+
+      def online?
+        type.casecmp('online').zero?
       end
     end
   end
