@@ -23,8 +23,13 @@ FactoryBot.define do
       )
     end
 
-    after :build do |order|
-      order.instance_variable_set(:@payments, build_list(:payment, 5))
+    transient do
+      payments { 5 }
+    end
+
+    after :build do |order, evaluator|
+      payments = build_list(:payment, evaluator.payments)
+      order.instance_variable_set(:@payments, payments)
     end
   end
 end
