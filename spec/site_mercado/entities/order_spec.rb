@@ -41,7 +41,7 @@ RSpec.describe SiteMercado::Entities::Order do
     end
   end
 
-  describe '.offline_payments' do
+  describe '.offline_payments?' do
     let(:order) { build(:order) }
 
     before { order.instance_variable_set(:@payments, payments) }
@@ -65,7 +65,7 @@ RSpec.describe SiteMercado::Entities::Order do
     end
   end
 
-  describe '.online_payments' do
+  describe '.online_payments?' do
     let(:order) { build(:order) }
 
     before { order.instance_variable_set(:@payments, payments) }

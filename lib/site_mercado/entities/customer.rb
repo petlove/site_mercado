@@ -38,9 +38,10 @@ module SiteMercado
       attr_reader(*ATTRS)
 
       def initialize(params)
+        @addresses = []
         super(params, ATTRS, DICTIONARY)
 
-        @addresses = @addresses&.map do |address|
+        @addresses = @addresses.map do |address|
           SiteMercado::Entities::Address.new(address)
         end
       end

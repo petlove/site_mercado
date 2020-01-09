@@ -22,9 +22,10 @@ module SiteMercado
       attr_reader(*ATTRS)
 
       def initialize(params)
+        @transactions = []
         super(params, ATTRS, DICTIONARY)
 
-        @transactions = @transactions&.map do |transaction|
+        @transactions = @transactions.map do |transaction|
           SiteMercado::Transaction.new(transaction)
         end
       end
