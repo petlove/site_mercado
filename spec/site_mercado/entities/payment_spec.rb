@@ -8,14 +8,14 @@ RSpec.describe SiteMercado::Entities::Order do
       let(:payment) { build(:payment, :offline) }
 
       it 'returns true' do
-        is_expected.to be_truthy
+        is_expected.to be true
       end
     end
     context 'when online' do
       let(:payment) { build(:payment, :online) }
 
       it 'returns false' do
-        is_expected.to be_falsey
+        is_expected.to be false
       end
     end
   end
@@ -27,14 +27,14 @@ RSpec.describe SiteMercado::Entities::Order do
       let(:payment) { build(:payment, :offline) }
 
       it 'returns false' do
-        is_expected.to be_falsey
+        is_expected.to be false
       end
     end
     context 'when online' do
       let(:payment) { build(:payment, :online) }
 
       it 'returns true' do
-        is_expected.to be_truthy
+        is_expected.to be true
       end
     end
   end
