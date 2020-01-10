@@ -22,7 +22,7 @@ require 'site_mercado/resources/v1/product'
 require 'site_mercado/resources/v1/order'
 
 require 'site_mercado/resources/v1/errors/bad_request_error'
-require 'site_mercado/resources/v1/errors/unautorized_error'
+require 'site_mercado/resources/v1/errors/unauthorized_error'
 require 'site_mercado/resources/v1/errors/unknown_status_error'
 require 'site_mercado/resources/v1/errors/precondition_failed_error'
 
