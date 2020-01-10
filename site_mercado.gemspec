@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.bindir = 'bin'
   spec.executable = 'sitemercado'
   spec.require_paths = ['lib']
-  spec.required_ruby_version = '>= 2.6.5'
+  spec.required_ruby_version = '>= 2.6.0'
 
   spec.add_runtime_dependency 'awesome_print'
   spec.add_runtime_dependency 'faraday'
