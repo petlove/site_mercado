@@ -22,11 +22,20 @@ module SiteMercado
       attr_reader(*ATTRS)
 
       def initialize(params)
+        @transactions = []
         super(params, ATTRS, DICTIONARY)
 
         @transactions = @transactions.map do |transaction|
           SiteMercado::Transaction.new(transaction)
         end
+      end
+
+      def offline?
+        type.casecmp('offline').zero?
+      end
+
+      def online?
+        type.casecmp('online').zero?
       end
     end
   end

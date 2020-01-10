@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.description   = 'Supporting gem for comunication with SiteMercado API'
   spec.homepage      = 'https://github.com/petlove/site_mercado'
 
-  spec.files = Dir['{lib}/**/*', 'bon/sitemercado', 'CHANGELOG.md', 'MIT-LICENSE', 'README.md']
+  spec.files = Dir['{lib}/**/*', 'CHANGELOG.md', 'MIT-LICENSE', 'README.md']
   spec.bindir = 'bin'
   spec.executable = 'sitemercado'
   spec.require_paths = ['lib']

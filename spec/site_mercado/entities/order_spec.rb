@@ -26,4 +26,66 @@ RSpec.describe SiteMercado::Entities::Order do
     pagamentos
     items
   ]
+
+  describe '.total_payments' do
+    let(:order) { build(:order) }
+    let(:payments) { build_list(:payment, 5, valor: 10.0) }
+    let(:total) { 50 }
+
+    before { order.instance_variable_set(:@payments, payments) }
+
+    subject { order.total_payments }
+
+    it 'returns the total of the payment' do
+      is_expected.to eq(total)
+    end
+  end
+
+  describe '.offline_payments?' do
+    let(:order) { build(:order) }
+
+    before { order.instance_variable_set(:@payments, payments) }
+
+    subject { order.offline_payments? }
+
+    context 'when has offline payments' do
+      let(:payments) { build_list(:payment, 5, :offline) }
+
+      it 'returns true' do
+        is_expected.to be_truthy
+      end
+    end
+
+    context 'when has no offline payments' do
+      let(:payments) { build_list(:payment, 5, :online) }
+
+      it 'returns false' do
+        is_expected.to be_falsey
+      end
+    end
+  end
+
+  describe '.online_payments?' do
+    let(:order) { build(:order) }
+
+    before { order.instance_variable_set(:@payments, payments) }
+
+    subject { order.online_payments? }
+
+    context 'when has online payments' do
+      let(:payments) { build_list(:payment, 5, tipo: 'Online') }
+
+      it 'returns true' do
+        is_expected.to be_truthy
+      end
+    end
+
+    context 'when has no onlinepayments' do
+      let(:payments) { build_list(:payment, 5, tipo: 'Offline') }
+
+      it 'returns false' do
+        is_expected.to be_falsey
+      end
+    end
+  end
 end

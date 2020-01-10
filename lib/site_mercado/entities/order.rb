@@ -58,25 +58,39 @@ module SiteMercado
       attr_reader(*ATTRS)
 
       def initialize(params)
+        @payments = []
+        @items = []
+        @ship_address = {}
+        @customer = {}
         super(params, ATTRS, DICTIONARY)
 
         @customer = SiteMercado::Entities::Customer.new(@customer)
 
-        @payments = @payments&.map do |payment|
+        @payments = @payments.map do |payment|
           SiteMercado::Entities::Payment.new(payment)
         end
 
-        @items = @items&.map do |item|
+        @items = @items.map do |item|
           SiteMercado::Entities::Item.new(item)
         end
 
-        @ship_address = @ship_address&.map do |address|
-          SiteMercado::Entities::Address.new(address)
-        end
+        @ship_address = SiteMercado::Entities::Address.new(@ship_address)
       end
 
       def encoded_id
         SiteMercado::Helpers::OrderParser.encode_id(id)
+      end
+
+      def total_payments
+        payments.map(&:value).sum.to_f
+      end
+
+      def offline_payments?
+        payments.select(&:offline?).any?
+      end
+
+      def online_payments?
+        payments.select(&:online?).any?
       end
     end
   end

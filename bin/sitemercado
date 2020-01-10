@@ -112,3 +112,7 @@ if ARGV.include?('cancel')
     ap 'No ID given!'
   end
 end
+
+if ARGV.include?('c') || ARGV.include?('console')
+  Pry.start
+end
