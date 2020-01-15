@@ -25,7 +25,7 @@ module SiteMercado
       end
 
       def cancel(code, message: nil)
-        params = { messagem: message }
+        params = { mensagem: message }
         Client.put("/pedido/#{code}/status/cancelar", body: params)
       end
     end
