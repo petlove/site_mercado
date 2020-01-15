@@ -13,7 +13,7 @@ module SiteMercado
       "#{prefix} API Message: '#{message}' metadata: #{metadata}"
     end
 
-    def initialize(response = '')
+    def initialize(response = nil)
       @status = response.nil? ? 418 : response.status
       @body = response.nil? ? {} : Oj.load(response.body)
       @code = body['codigo']
