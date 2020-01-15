@@ -13,9 +13,9 @@ module SiteMercado
       "#{prefix} API Message: '#{message}' metadata: #{metadata}"
     end
 
-    def initialize(response)
-      @status = response.status
-      @body = Oj.load(response.body) || ''
+    def initialize(response = nil)
+      @status = response.nil? ? 418 : response.status
+      @body = response.nil? ? {} : Oj.load(response.body)
 
       super("[ERROR] Unknown Status! Body response: '#{body}'")
     end
