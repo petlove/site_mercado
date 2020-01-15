@@ -36,13 +36,13 @@ module SiteMercado
       def handle_error(response)
         case response.status
         when 400
-          raise BadRequestError.new(response)
+          raise Errors::BadRequestError.new(response)
         when 401
-          raise UnauthorizedError.new(response)
+          raise Errors::UnauthorizedError.new(response)
         when 412
-          raise PreconditionFailedError.new(response)
+          raise Errors::PreconditionFailedError.new(response)
         else
-          raise UnknownStatusError.new(response)
+          raise Errors::UnknownStatusError.new(response)
         end
       end
 
