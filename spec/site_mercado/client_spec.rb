@@ -11,7 +11,7 @@ RSpec.describe SiteMercado::Client do
         subject { -> { described_class.get(path) } }
 
         it 'raise an error' do
-          is_expected.to raise_error(SiteMercado::BadRequestError)
+          is_expected.to raise_error(SiteMercado::Errors::BadRequestError)
         end
       end
 
@@ -21,7 +21,7 @@ RSpec.describe SiteMercado::Client do
         subject { -> { described_class.get(path) } }
 
         it 'raise an error' do
-          is_expected.to raise_error(SiteMercado::UnauthorizedError)
+          is_expected.to raise_error(SiteMercado::Errors::UnauthorizedError)
         end
       end
 
@@ -31,7 +31,7 @@ RSpec.describe SiteMercado::Client do
         subject { -> { described_class.put(path) } }
 
         it 'raise an error' do
-          is_expected.to raise_error(SiteMercado::PreconditionFailedError)
+          is_expected.to raise_error(SiteMercado::Errors::PreconditionFailedError)
         end
       end
     end

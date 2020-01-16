@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://service.sitemercado.com.br/api/v1///pedido/1000000000-A0000
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v1.0.0
+      Authorization:
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InBpVmxsb1FEU01LeGgxbTJ5Z3FHU1ZkZ0ZwQSJ9.eyJhdWQiOiI1ZWI5YjY2Zi0zN2QwLTQxY2MtOTY1My03MTc1MDUwNjYyODIiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vN2M0YmY1MTUtNTk5MC00YThmLTg3N2UtYzQ2YWNjYTI5YjQ1L3YyLjAiLCJpYXQiOjE1NzkxMjY4OTEsIm5iZiI6MTU3OTEyNjg5MSwiZXhwIjoxNTc5MTMwNzkxLCJhaW8iOiI0Mk5nWUxEczVqSFJzdHFsWTljZWVYZmU0ZW9EQUE9PSIsImF6cCI6IjRjY2RhOGMzLTA2Y2MtNDAzNi1iZmNlLTEwMmEwYzNmOTUzMCIsImF6cGFjciI6IjEiLCJvaWQiOiIwNjA2NzZmMS0wOTAyLTQyMzQtYWEwMC05NDNhM2YzMzU5ZmIiLCJyb2xlcyI6WyJQZWRpZG8uSXRlbXMiLCJMb2phLkdldCIsIlBlZGlkby5HZXQiLCJQcm9kdXRvSW50ZWdyYWNhby5Qb3N0IiwiUGVkaWRvLkV2ZW50b3MiLCJQZWRpZG8uU3RhdHVzIl0sInN1YiI6IjA2MDY3NmYxLTA5MDItNDIzNC1hYTAwLTk0M2EzZjMzNTlmYiIsInRpZCI6IjdjNGJmNTE1LTU5OTAtNGE4Zi04NzdlLWM0NmFjY2EyOWI0NSIsInV0aSI6ImxqTExwTF9VNFVHc1ZQbGRPNmZyQUEiLCJ2ZXIiOiIyLjAifQ.IQkxSAqV6jm5Hy-iAZ_9LGjIMbiZXJx8DUIy1QWLnAU4LRU35QDuFrf9eSbFkqXE4pt3A4ZDSfkR3ROpSotdjCGcZD0kW6pO0dqjjfFwvhNBQRn7P-BhYmDSV9qqT1eo36t4CSoC1DR2ajfBI7YfJsO-U983RZyI9PCNkoy6dI0o_Az3rLKHLtWw9Dzv8jdVaNaUsDEgkfyoll6mjBDyZWqpVYlgOxLD_VbUMZMFDfTiljXU6kUAwp5xp_T4BwTg_aUEwcPyfkpkSpdb1PQ3R0MQtVY5Fs140jTbGeklvS15NDWqyD0zT5K47Zm0WfhjzyHSLlW6fdi6km8SzX87YQ
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 412
+      message: Precondition Failed
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+      Server:
+      - Kestrel
+      Date:
+      - Wed, 15 Jan 2020 22:26:31 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJjb2RpZ28iOiIwIiwiZGVzY3JpY2FvIjoiUmVjdXJzbyBuw6NvIGVuY29udHJhZG8hIiwibWVzc2FnZSI6IlBlZGlkbzogMTAwMDAwMDAwMC1BMDAwMCwgbsOjbyBlbmNvbnRyYWRvISIsImlkIjpudWxsfQ==
+    http_version: 
+  recorded_at: Wed, 15 Jan 2020 22:26:32 GMT
+recorded_with: VCR 5.0.0
