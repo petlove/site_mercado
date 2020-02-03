@@ -7,6 +7,7 @@ gem 'faraday'
 gem 'oj'
 
 group :test do
+  gem 'simplecov-console'
   gem 'factory_bot'
   gem 'faker'
   gem 'rspec'

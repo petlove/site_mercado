@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe SiteMercado::Event do
   describe '#all' do
-    let(:response) { build_list(:event, 5, :response).map(&:marshal_dump) }
+    let(:response) { build_list(:event_response, 5).map(&:marshal_dump) }
     let(:events) { response.map { |event| SiteMercado::Entities::Event.new(event) } }
 
     before { allow(SiteMercado::Client).to receive(:get).and_return(response) }
@@ -35,7 +35,7 @@ RSpec.describe SiteMercado::Event do
 
   describe '#find_by_shop_id' do
     let(:shop_id) { Faker::Number.number }
-    let(:response) { build_list(:event, 5, :response).map(&:marshal_dump) }
+    let(:response) { build_list(:event_response, 5).map(&:marshal_dump) }
     let(:events) { response.map { |event| SiteMercado::Entities::Event.new(event) } }
 
     before { allow(SiteMercado::Client).to receive(:get).and_return(response) }
@@ -68,7 +68,7 @@ RSpec.describe SiteMercado::Event do
   end
 
   describe '#check_event' do
-    let(:events) { build_list(:event, 5, :response) }
+    let(:events) { build_list(:event_response, 5) }
     before { allow(SiteMercado::Client).to receive(:post) }
 
     subject { described_class.check_event(ids) }
@@ -81,7 +81,7 @@ RSpec.describe SiteMercado::Event do
         expect(SiteMercado::Client).to(
           receive(:post)
           .once
-          .with('/pedido/eventos/verificado', body)
+          .with('/pedido/eventos/verificado', body: body)
         )
         subject
       end
@@ -95,7 +95,7 @@ RSpec.describe SiteMercado::Event do
         expect(SiteMercado::Client).to(
           receive(:post)
           .once
-          .with('/pedido/eventos/verificado', body)
+          .with('/pedido/eventos/verificado', body: body)
         )
         subject
       end
@@ -109,7 +109,7 @@ RSpec.describe SiteMercado::Event do
         expect(SiteMercado::Client).to(
           receive(:post)
           .once
-          .with('/pedido/eventos/verificado', body)
+          .with('/pedido/eventos/verificado', body: body)
         )
         subject
       end
@@ -123,7 +123,7 @@ RSpec.describe SiteMercado::Event do
         expect(SiteMercado::Client).to(
           receive(:post)
           .once
-          .with('/pedido/eventos/verificado', body)
+          .with('/pedido/eventos/verificado', body: body)
         )
         subject
       end
