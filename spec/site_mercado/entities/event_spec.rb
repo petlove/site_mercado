@@ -112,7 +112,7 @@ RSpec.describe SiteMercado::Entities::Event do
 
       subject { event.exported? }
 
-      it { is_expected.to eq false}
+      it { is_expected.to eq false }
     end
   end
 
