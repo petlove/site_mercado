@@ -67,11 +67,11 @@ RSpec.describe SiteMercado::Event do
     end
   end
 
-  describe '#check_event' do
+  describe '#check' do
     let(:events) { build_list(:event_response, 5) }
     before { allow(SiteMercado::Client).to receive(:post) }
 
-    subject { described_class.check_event(ids) }
+    subject { described_class.check(ids) }
 
     context 'when array of ids' do
       let(:ids) { events.map(&:id) }
