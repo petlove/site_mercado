@@ -5,7 +5,7 @@ require 'oj'
 module SiteMercado
   module Errors
     class UnknownStatusError < StandardError
-      attr_reader :status, :body, :code, :description, :error, :id
+      attr_reader :status, :body
 
       def self.build_message(body)
         prefix = '[ERROR] Precondition Failed!'

@@ -15,7 +15,7 @@ module SiteMercado
         end
       end
 
-      def check_event(ids)
+      def check(ids)
         body = if ids.is_a?(Array)
                  ids.map { |id| { id: id } }
                elsif ids.is_a?(Integer) || ids.is_a?(String)
@@ -24,7 +24,7 @@ module SiteMercado
                  [{}]
                end
 
-        Client.post('/pedido/eventos/verificado', body)
+        Client.post('/pedido/eventos/verificado', body: body)
       end
     end
   end

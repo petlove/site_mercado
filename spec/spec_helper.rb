@@ -2,6 +2,7 @@
 
 require 'bundler/setup'
 require 'simplecov'
+require 'simplecov-console'
 require 'support/configs/simple_cov_config'
 SimpleCovConfig.configure
 

@@ -27,6 +27,18 @@ RSpec.describe SiteMercado::Entities::Order do
     items
   ]
 
+  describe '.encoded_id' do
+    let(:order) { build(:order) }
+
+    subject { order.encoded_id }
+
+    after { subject }
+
+    it 'calls order parser helper' do
+      expect(SiteMercado::Helpers::OrderParser).to receive(:encode_id).with(order.id)
+    end
+  end
+
   describe '.total_payments' do
     let(:order) { build(:order) }
     let(:payments) { build_list(:payment, 5, valor: 10.0) }

@@ -16,4 +16,28 @@ RSpec.describe SiteMercado::Entities::Customer do
     telefoneFixo
     enderecos
   ]
+
+  describe '.initialize' do
+    let(:params) do
+      {
+        'enderecos' => [
+          {
+            'id' => 43,
+            'logradouro' => 'itaim',
+            'numero' => 4134,
+            'complemento' => '*',
+            'uf' => 'SP',
+            'cidade' => 'Sao Paulo',
+            'estado' => 'Sao Paulo'
+          }
+        ]
+      }
+    end
+
+    subject { described_class.new(params).addresses }
+
+    it 'creates a address' do
+      expect(subject.first).to be_a(SiteMercado::Entities::Address)
+    end
+  end
 end

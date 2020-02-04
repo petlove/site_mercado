@@ -36,8 +36,20 @@ module SiteMercado
         state == 'SEP'
       end
 
-      def separeted?
+      def awaiting_delivery?
+        state == 'ENT'
+      end
+
+      def awaiting_withdrawal?
         state == 'RET'
+      end
+
+      def awaiting_export?
+        state == 'PE0'
+      end
+
+      def exported?
+        state == 'PE1'
       end
 
       def canceled?

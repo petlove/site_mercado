@@ -10,6 +10,7 @@ group :test do
   gem 'factory_bot'
   gem 'faker'
   gem 'rspec'
+  gem 'simplecov-console'
 end
 
 gemspec
