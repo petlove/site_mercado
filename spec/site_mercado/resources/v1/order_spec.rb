@@ -3,7 +3,7 @@ require 'spec_helper'
 RSpec.describe SiteMercado::Order do
   let(:code) { '1912132615-F7162' }
 
-  describe '#find' do
+  xdescribe '#find' do
     subject { described_class.find(code) }
 
     context 'when valid code' do
@@ -23,7 +23,7 @@ RSpec.describe SiteMercado::Order do
     end
   end
 
-  describe '#find_by_encoded' do
+  xdescribe '#find_by_encoded' do
     let(:code) { '1912132615707162' }
 
     subject { described_class.find_by_encoded(code) }
@@ -45,7 +45,7 @@ RSpec.describe SiteMercado::Order do
     end
   end
 
-  describe '#in_separation' do
+  xdescribe '#in_separation' do
     let(:code) { '2001152615-D8742' }
 
     subject { described_class.in_separation(code) }
@@ -70,7 +70,7 @@ RSpec.describe SiteMercado::Order do
     end
   end
 
-  describe '#separated' do
+  xdescribe '#separated' do
     let(:code) { '2001152615-D8742' }
     let(:options) do
       {
@@ -112,7 +112,7 @@ RSpec.describe SiteMercado::Order do
     end
   end
 
-  describe '#cancel' do
+  xdescribe '#cancel' do
     let(:code) { '2001152615-D8742' }
     let(:options) { { message: Faker::Movie.quote } }
     let(:body) { { mensagem: options[:message] } }
