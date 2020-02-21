@@ -3,16 +3,16 @@ module SiteMercado
     class OrderParser
       class << self
         def encode_id(id)
-          time = id.split('-')[0]
-          code = id.split('-')[1]
+          time, code = id.split('-')
           ascii = code[0].ord
           "#{time}#{ascii}#{code[1..]}"
         end
 
         def decode_id(id)
-          time = id[0..9]
-          ascii = id[10..11]
-          code = id[12..]
+          time = id[0..3]
+          ascii = id[4..5]
+          code = id[6..]
+
           "#{time}-#{ascii.to_i.chr}#{code}"
         end
       end

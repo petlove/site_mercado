@@ -3,16 +3,14 @@ require 'spec_helper'
 RSpec.describe SiteMercado::Helpers::OrderParser do
   let(:order_ids) do
     %w[
-      1912182615-D4989
-      1912192615-E3570
-      1912132615-F7162
+      2681-F1103705
+      2681-F1107141
     ]
   end
   let(:encoded_ids) do
     %w[
-      1912182615684989
-      1912192615693570
-      1912132615707162
+      2681701103705
+      2681701107141
     ]
   end
 
