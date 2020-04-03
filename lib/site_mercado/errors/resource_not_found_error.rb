@@ -10,7 +10,7 @@ module SiteMercado
       def initialize(response = nil)
         @status = response.nil? ? 404 : response.status
 
-        super('[ERROR] Resource not found!') 
+        super('[ERROR] Resource not found!')
       end
     end
   end
