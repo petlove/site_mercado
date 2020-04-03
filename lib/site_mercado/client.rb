@@ -41,6 +41,8 @@ module SiteMercado
           raise Errors::UnauthorizedError.new(response)
         when 412
           raise Errors::PreconditionFailedError.new(response)
+        when 404
+          raise Errors::ResourceNotFoundError.new(response)
         else
           raise Errors::UnknownStatusError.new(response)
         end

@@ -34,12 +34,8 @@ RSpec.describe SiteMercado::Errors::UnknownStatusError do
     subject { described_class.new(response) }
 
     context 'when response is given' do
-      let(:body) { { foo: 'bar' }.to_json }
+      let(:body) { { foo: 'bar' }.to_s }
       let(:response) { double(status: 422, body: body) }
-
-      it 'exception has body attributes' do
-        expect(subject.body).to eq(Oj.load(body))
-      end
 
       it 'exception has status attributes' do
         expect(subject.status).to eq(422)

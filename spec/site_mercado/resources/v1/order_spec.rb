@@ -23,19 +23,19 @@ RSpec.describe SiteMercado::Order do
     end
   end
 
-  xdescribe '#find_by_encoded' do
-    let(:code) { '1912132615707162' }
-
+  describe '#find_by_encoded' do
     subject { described_class.find_by_encoded(code) }
 
     context 'when valid encoded' do
+      let(:code) { '2615701780054' }
+
       it 'returns a order', :vcr do
         is_expected.to be_a(SiteMercado::Entities::Order)
       end
     end
 
     context 'when invalid encoded' do
-      let(:code) { '1932532615707162' }
+      let(:code) { '2615701780000' }
 
       it 'raises error', :vcr do
         expect { subject }.to(

@@ -26,6 +26,7 @@ require 'site_mercado/errors/bad_request_error'
 require 'site_mercado/errors/unautorized_error'
 require 'site_mercado/errors/unknown_status_error'
 require 'site_mercado/errors/precondition_failed_error'
+require 'site_mercado/errors/resource_not_found_error'
 
 require 'site_mercado/helpers/order_parser'
 

@@ -16,9 +16,8 @@ module SiteMercado
 
       def initialize(response = nil)
         @status = response.nil? ? 418 : response.status
-        @body = response.nil? ? {} : Oj.load(response.body)
 
-        super("[ERROR] Unknown Status! Body response: '#{body}'")
+        super("[ERROR] Unknown Status! Status: #{response.status} Body response: '#{response.body}'")
       end
     end
   end
