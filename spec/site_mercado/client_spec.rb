@@ -72,5 +72,15 @@ RSpec.describe SiteMercado::Client do
         is_expected.to_not raise_error
       end
     end
+
+    context 'when resource not found', :vcr do
+      let(:path) { '/pedido/' }
+
+      subject { -> { described_class.get(path) } }
+
+      it 'not raises error' do
+        is_expected.to raise_error(SiteMercado::Errors::ResourceNotFoundError)
+      end
+    end
   end
 end
