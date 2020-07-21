@@ -13,7 +13,7 @@ RSpec.describe SiteMercado::Entities::Product do
     full_name
     price
     stock_total
-    stock_minimun
+    stock_minimum
     description
     active
     sku

@@ -15,7 +15,7 @@ module SiteMercado
         full_name: :nome,
         price: :valor,
         stock_total: :quantidadeEstoqueAtual,
-        stock_minimun: :quantidadeEstoqueMinimo,
+        stock_minimum: :quantidadeEstoqueMinimo,
         description: :descricao,
         active: :ativo,
         sku: :plu,
