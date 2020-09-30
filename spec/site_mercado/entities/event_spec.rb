@@ -133,4 +133,22 @@ RSpec.describe SiteMercado::Entities::Event do
       it { is_expected.to eq false }
     end
   end
+
+  describe '.finished?' do
+    context 'when finished' do
+      let(:event) { build(:event, :finished) }
+
+      subject { event.finished? }
+
+      it { is_expected.to eq true }
+    end
+
+    context 'when not finished' do
+      let(:event) { build(:event, :invoiced) }
+
+      subject { event.finished? }
+
+      it { is_expected.to eq false }
+    end
+  end
 end

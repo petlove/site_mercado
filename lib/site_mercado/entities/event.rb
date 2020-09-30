@@ -20,6 +20,8 @@ module SiteMercado
         SEP
         RET
         CAN
+        PE0
+        FIN
       ].freeze
 
       attr_reader(*ATTRS)
@@ -54,6 +56,10 @@ module SiteMercado
 
       def canceled?
         state == 'CAN'
+      end
+
+      def finished?
+        state == 'FIN'
       end
     end
   end

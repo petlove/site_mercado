@@ -45,6 +45,10 @@ FactoryBot.define do
     trait :canceled do
       status { 'CAN' }
     end
+
+    trait :canceled do
+      status { 'FIN' }
+    end
   end
 
   factory :event_response, class: 'OpenStruct' do
