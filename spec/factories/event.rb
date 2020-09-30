@@ -46,7 +46,7 @@ FactoryBot.define do
       status { 'CAN' }
     end
 
-    trait :canceled do
+    trait :finished do
       status { 'FIN' }
     end
   end
