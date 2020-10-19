@@ -31,8 +31,9 @@ GEM
       activesupport (>= 4.2.0)
     faker (2.14.0)
       i18n (>= 1.6, < 2)
-    faraday (1.0.0)
+    faraday (1.1.0)
       multipart-post (>= 1.2, < 3)
+      ruby2_keywords
     hashdiff (1.0.1)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
@@ -79,6 +80,7 @@ GEM
     rubocop-performance (1.8.0)
       rubocop (>= 0.87.0)
     ruby-progressbar (1.10.1)
+    ruby2_keywords (0.0.2)
     safe_yaml (1.0.5)
     simplecov (0.17.1)
       docile (~> 1.1)
