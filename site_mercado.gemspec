@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'faraday'
   spec.add_runtime_dependency 'oj'
 
-  spec.add_development_dependency 'bundler', '~> 2.0.2'
+  spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'dotenv', '~> 2.7.5'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'rake', '~> 13.0'
