@@ -118,7 +118,7 @@ RSpec.describe SiteMercado::Event do
     end
 
     context 'when neither one' do
-      let(:ids) {}
+      let(:ids) { nil }
       let(:body) { [{}] }
 
       it 'calls post /pedido/eventos/verificado' do

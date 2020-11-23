@@ -21,9 +21,7 @@ module SiteMercado
         body = case ids
                when Array
                  ids.map { |id| { id: id } }
-               when Integer
-                 [id: ids]
-               when String
+               when Integer, String
                  [id: ids]
                else
                  [{}]
