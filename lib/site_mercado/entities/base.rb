@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # frozen_literal_string: true
 
 module SiteMercado
@@ -15,7 +17,7 @@ module SiteMercado
         attrs = {}
 
         instance_variables.each do |attribute|
-          attrs[attribute[1..-1].to_sym] = instance_variable_get(attribute)
+          attrs[attribute[1..].to_sym] = instance_variable_get(attribute)
         end
 
         attrs

@@ -26,8 +26,8 @@ Metrics/MethodLength:
 
 AllCops:
   DisplayCopNames: true
+  Enabled: true
 Style/FrozenStringLiteralComment:
-  Enabled: false
   Exclude:
     - 'bin/*'
     - 'spec/*'

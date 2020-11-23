@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe SiteMercado::Event do
@@ -115,7 +117,7 @@ RSpec.describe SiteMercado::Event do
       end
     end
 
-    context 'when nether one' do
+    context 'when neither one' do
       let(:ids) {}
       let(:body) { [{}] }
 
