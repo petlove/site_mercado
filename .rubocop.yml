@@ -1,10 +1,9 @@
 require:
   - rubocop-performance
 
-Layout/LineLength:
-  Max: 120
-Naming/AccessorMethodName:
-  Enabled: false
+AllCops:
+  DisplayCopNames: true
+  NewCops: enable
 
 Style/Documentation:
   Enabled: false
@@ -17,17 +16,13 @@ Style/RaiseArgs:
   Enabled: false
 
 Metrics/BlockLength:
-  Max: 30
   Exclude:
     - 'spec/**/*'
+    - 'site_mercado.gemspec'
 
 Metrics/MethodLength:
-  Max: 30
+  Max: 13
 
-AllCops:
-  DisplayCopNames: true
-  NewCops: enable
 Style/FrozenStringLiteralComment:
   Exclude:
     - 'bin/*'
-    - 'spec/*'
