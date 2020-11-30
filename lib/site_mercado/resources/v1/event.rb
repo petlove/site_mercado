@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SiteMercado
   class Event
     attr_reader :id, :order_id, :status, :shop_id
@@ -16,14 +18,14 @@ module SiteMercado
       end
 
       def check(ids)
-        body = if ids.is_a?(Array)
+        body = case ids
+               when Array
                  ids.map { |id| { id: id } }
-               elsif ids.is_a?(Integer) || ids.is_a?(String)
+               when Integer, String
                  [id: ids]
                else
                  [{}]
                end
-
         Client.post('/pedido/eventos/verificado', body: body)
       end
     end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe SiteMercado::Event do
@@ -115,8 +117,8 @@ RSpec.describe SiteMercado::Event do
       end
     end
 
-    context 'when nether one' do
-      let(:ids) {}
+    context 'when neither one' do
+      let(:ids) { nil }
       let(:body) { [{}] }
 
       it 'calls post /pedido/eventos/verificado' do

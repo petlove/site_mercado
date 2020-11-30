@@ -1,4 +1,4 @@
-# frozen_literal_string: true
+# frozen_string_literal: true
 
 module SiteMercado
   module Entities
@@ -44,9 +44,9 @@ module SiteMercado
 
       attr_reader(*ATTRS)
 
-      def initialize(params)
+      def initialize(params) # rubocop:disable Lint/MissingSuper
         ATTRS.map do |attr|
-          value = params.dig(DICTIONARY.key(attr))
+          value = params[DICTIONARY.key(attr)]
           instance_variable_set("@#{attr}", value) if value
         end
 

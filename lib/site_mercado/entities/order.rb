@@ -1,4 +1,4 @@
-# frozen_literal_string: true
+# frozen_string_literal: true
 
 module SiteMercado
   module Entities
@@ -82,7 +82,7 @@ module SiteMercado
       end
 
       def total_payments
-        payments.map(&:value).sum.to_f
+        payments.sum(&:value).to_f
       end
 
       def offline_payments?

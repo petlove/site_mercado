@@ -7,6 +7,7 @@ require 'site_mercado/oauth'
 
 require 'site_mercado/resources/v1/event'
 require 'site_mercado/resources/v1/order'
+require 'site_mercado/resources/v1/product'
 
 require 'site_mercado/entities/base'
 require 'site_mercado/entities/event'
@@ -17,10 +18,6 @@ require 'site_mercado/entities/payment'
 require 'site_mercado/entities/item'
 require 'site_mercado/entities/transaction'
 require 'site_mercado/entities/product'
-
-require 'site_mercado/resources/v1/event'
-require 'site_mercado/resources/v1/product'
-require 'site_mercado/resources/v1/order'
 
 require 'site_mercado/errors/bad_request_error'
 require 'site_mercado/errors/unautorized_error'
