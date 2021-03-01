@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.9'
   spec.add_development_dependency 'rubocop', '~> 1.5.0'
-  spec.add_development_dependency 'rubocop-performance', '~> 1.9.0'
+  spec.add_development_dependency 'rubocop-performance', '~> 1.10.0'
   spec.add_development_dependency 'simplecov', '>= 0.17.0'
   spec.add_development_dependency 'simplecov-console', '>= 0.6.0'
   spec.add_development_dependency 'vcr', '>= 5.0.0'
