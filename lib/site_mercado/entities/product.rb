@@ -19,7 +19,9 @@ module SiteMercado
         description: :descricao,
         active: :ativo,
         sku: :plu,
-        close_validy: :validadeProxima
+        close_validy: :validadeProxima,
+        promotional_price: :valorPromocao,
+        image: :imageURL
       }.freeze
 
       ATTRS = %i[
@@ -34,6 +36,7 @@ module SiteMercado
         nome
         valor
         valorPromocao
+        imageURL
         quantidadeEstoqueAtual
         quantidadeEstoqueMinimo
         descricao
