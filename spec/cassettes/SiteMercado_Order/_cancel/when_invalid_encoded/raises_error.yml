@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://service.sitemercado.com.br/api/v1///pedido/1000000000-A0000/status/cancelar
+    uri: https://service.sitemercado.com.br/api/v1//pedido/1000000000-A0000/status/cancelar
     body:
       encoding: UTF-8
       string: '{"mensagem":"Here''s looking at you, kid."}'

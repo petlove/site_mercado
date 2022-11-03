@@ -20,6 +20,8 @@ RSpec.describe SiteMercado::Entities::Product do
     active
     sku
     close_validy
+    image
+    promotional_price
   ]
 
   describe '#initialize' do

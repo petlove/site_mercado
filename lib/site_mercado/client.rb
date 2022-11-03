@@ -10,7 +10,7 @@ module SiteMercado
       def request(path, params: {}, body: nil, auth: true)
         handle_request do
           connection.public_send(__callee__) do |request|
-            request.url "#{api_version}/#{path}"
+            request.url "#{api_version}#{path}"
             request.headers[:authorization] = "Bearer #{token}" if auth
             request.body = body.to_json if body
             request.params = params

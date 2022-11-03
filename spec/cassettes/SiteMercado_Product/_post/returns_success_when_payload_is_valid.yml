@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://service.sitemercado.com.br/api/v1//oauth/token
+    uri: https://service.sitemercado.com.br/api/v1/oauth/token
     body:
       encoding: UTF-8
       string: '{"client_id":null,"client_secret":null}'
@@ -38,7 +38,7 @@ http_interactions:
   recorded_at: Fri, 20 Dec 2019 22:28:29 GMT
 - request:
     method: post
-    uri: https://service.sitemercado.com.br/api/v1//produtointegracao
+    uri: https://service.sitemercado.com.br/api/v1/produtointegracao
     body:
       encoding: UTF-8
       string: '"#<SiteMercado::Entities::Product:0x0000563dca4ffb10>"'
