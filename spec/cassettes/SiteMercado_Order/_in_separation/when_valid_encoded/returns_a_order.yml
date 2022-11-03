@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://service.sitemercado.com.br/api/v1///pedido/2001152615-D8742/status/em_separacao
+    uri: https://service.sitemercado.com.br/api/v1/pedido/2001152615-D8742/status/em_separacao
     body:
       encoding: UTF-8
       string: "{}"

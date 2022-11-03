@@ -31,7 +31,7 @@ RSpec.describe SiteMercado::Configuration do
     subject { configuration.api_version }
 
     context 'when does not has SITEMERCADO_API_VERSION' do
-      let(:endpoint) { '/api/v1/' }
+      let(:endpoint) { '/api/v1' }
 
       it 'creates with default endpoint' do
         is_expected.to eq(endpoint)

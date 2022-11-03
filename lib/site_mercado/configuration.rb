@@ -6,7 +6,7 @@ module SiteMercado
 
     def initialize
       @endpoint = ENV.fetch('SITEMERCADO_URL', 'https://service.sitemercado.com.br/')
-      @api_version = ENV.fetch('SITEMERCADO_API_VERSION', '/api/v1/')
+      @api_version = ENV.fetch('SITEMERCADO_API_VERSION', '/api/v1')
       @client_id = ENV.fetch('SITEMERCADO_CLIENT_SECRET', '')
       @client_secret = ENV.fetch('SITEMERCADO_CLIENT_ID', '')
     end

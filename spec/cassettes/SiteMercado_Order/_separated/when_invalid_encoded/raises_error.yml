@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://service.sitemercado.com.br/api/v1///pedido/1000000000-A0000/status/separado
+    uri: https://service.sitemercado.com.br/api/v1/pedido/1000000000-A0000/status/separado
     body:
       encoding: UTF-8
       string: '{"nomeSeparador":"Abbie Birthday","quantidadeSacolasResfriada":4,"quantidadeSacolasSeca":7,"valorTotal":78.4}'
