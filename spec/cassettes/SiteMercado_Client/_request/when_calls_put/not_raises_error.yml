@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://service.sitemercado.com.br/api/v1//oauth/token
+    uri: https://service.sitemercado.com.br/api/v1/oauth/token
     body:
       encoding: UTF-8
       string: '{"client_id":"4ccda8c3-06cc-4036-bfce-102a0c3f9530","client_secret":"@tucJ5K6lWH.ljkQngJKhjkj/@928oKR"}'
@@ -37,7 +37,7 @@ http_interactions:
   recorded_at: Mon, 06 Jan 2020 21:47:32 GMT
 - request:
     method: put
-    uri: https://service.sitemercado.com.br/api/v1//pedido/2001062615-B7104/status/em_separacao
+    uri: https://service.sitemercado.com.br/api/v1/pedido/2001062615-B7104/status/em_separacao
     body:
       encoding: UTF-8
       string: "{}"

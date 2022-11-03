@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://service.sitemercado.com.br/api/v1//oauth/token
+    uri: https://service.sitemercado.com.br/api/v1/oauth/token
     body:
       encoding: UTF-8
       string: '{"client_id":"123","client_secret":"@tucJ5K6lWH.ljkQngJKhjkj/@928oKR"}'

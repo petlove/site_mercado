@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://service.sitemercado.com.br/api/v1//pedido/
+    uri: https://service.sitemercado.com.br/api/v1/pedido/
     body:
       encoding: UTF-8
       string: "{}"
