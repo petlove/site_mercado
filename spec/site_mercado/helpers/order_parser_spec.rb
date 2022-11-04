@@ -24,6 +24,22 @@ RSpec.describe SiteMercado::Helpers::OrderParser do
     it 'encode to a number only format' do
       expect(encoded_ids).to include(subject)
     end
+
+    context 'when it is a real number' do
+      let(:order_id) { '29941-F69973097' }
+
+      it 'returns an encoded number' do
+        is_expected.to eql('299417069973097')
+      end
+    end
+
+    context 'when it is another real number' do
+      let(:order_id) { '31498-E69956712' }
+
+      it 'returns an encoded number' do
+        is_expected.to eql('314986969956712')
+      end
+    end
   end
 
   describe '#decode_id' do
@@ -33,6 +49,22 @@ RSpec.describe SiteMercado::Helpers::OrderParser do
 
     it 'encode to a number only format' do
       expect(order_ids).to include(subject)
+    end
+
+    context 'when it is a real number' do
+      let(:encoded_id) { '299417069973097' }
+
+      it 'returns an decoded number' do
+        is_expected.to eql('29941-F69973097')
+      end
+    end
+
+    context 'when it is another real number' do
+      let(:encoded_id) { '314986969956712' }
+
+      it 'returns an decoded number' do
+        is_expected.to eql('31498-E69956712')
+      end
     end
   end
 end

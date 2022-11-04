@@ -15,7 +15,11 @@ module SiteMercado
           ascii = id[4..5]
           code = id[6..]
 
-          "#{time}-#{ascii.to_i.chr}#{code}"
+          result = "#{time}-#{ascii.to_i.chr}#{code}"
+
+          return result if result.size <= 14
+
+          "#{id[0..4]}-#{id[5..6].to_i.chr}#{id[7..]}"
         end
       end
     end
