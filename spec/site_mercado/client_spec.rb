@@ -68,7 +68,7 @@ RSpec.describe SiteMercado::Client do
       let(:path) { '/pedido/eventos/verificado' }
       let(:body) { [{ id: '11774415' }] }
 
-      subject { -> { described_class.post(path, body: body) } }
+      subject { -> { described_class.post(path, body:) } }
 
       it 'not raises error' do
         is_expected.to_not raise_error

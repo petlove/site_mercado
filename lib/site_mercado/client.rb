@@ -33,19 +33,17 @@ module SiteMercado
         handle_error(response)
       end
 
+      def errors_map
+        {
+          400 => Errors::BadRequestError,
+          401 => Errors::UnauthorizedError,
+          412 => Errors::PreconditionFailedError,
+          404 => Errors::ResourceNotFoundError
+        }
+      end
+
       def handle_error(response)
-        case response.status
-        when 400
-          raise Errors::BadRequestError.new(response)
-        when 401
-          raise Errors::UnauthorizedError.new(response)
-        when 412
-          raise Errors::PreconditionFailedError.new(response)
-        when 404
-          raise Errors::ResourceNotFoundError.new(response)
-        else
-          raise Errors::UnknownStatusError.new(response)
-        end
+        raise (errors_map[response.status] || Errors::UnknownStatusError).new(response)
       end
 
       def connection

@@ -87,10 +87,10 @@ if ARGV.include?('separated')
   if id && separator
     ap "Separated #{id}"
     params = {
-      separator: separator,
-      amount_cold_bag: amount_cold_bag,
-      amount_dry_bag: amount_dry_bag,
-      total_value: total_value
+      separator:,
+      amount_cold_bag:,
+      amount_dry_bag:,
+      total_value:
     }
     separated = SiteMercado::Order.separated(id, params)
     ap separated
@@ -105,7 +105,7 @@ if ARGV.include?('cancel')
 
   if id
     ap "Cancel #{id}"
-    params = { message: message }
+    params = { message: }
     cancel = SiteMercado::Order.cancel(id, params)
     ap cancel
   else

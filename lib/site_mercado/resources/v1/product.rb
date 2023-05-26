@@ -3,12 +3,14 @@
 module SiteMercado
   class Product
     class << self
-      def post(body)
+      def post(body, reset: false)
         products = [body].flatten.map do |product|
           SiteMercado::Entities::Product.new(product).attributes
         end
 
-        Client.post('/produtointegracao', body: products)
+        reset_param = '?reset=true' if reset
+
+        Client.post("/produtointegracao#{reset_param}", body: products)
       end
     end
   end

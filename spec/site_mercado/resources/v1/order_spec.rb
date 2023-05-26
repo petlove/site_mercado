@@ -97,7 +97,7 @@ RSpec.describe SiteMercado::Order do
       it 'returns a order', :vcr do
         expect(SiteMercado::Client).to(
           receive(:put)
-            .with("/pedido/#{code}/status/separado", body: body)
+            .with("/pedido/#{code}/status/separado", body:)
         )
         subject
       end
@@ -125,7 +125,7 @@ RSpec.describe SiteMercado::Order do
       it 'returns a order', :vcr do
         expect(SiteMercado::Client).to(
           receive(:put)
-            .with("/pedido/#{code}/status/cancelar", body: body)
+            .with("/pedido/#{code}/status/cancelar", body:)
         )
         subject
       end

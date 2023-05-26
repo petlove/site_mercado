@@ -13,7 +13,7 @@ require 'site_mercado'
 require 'pry'
 require 'factory_bot'
 
-Dir[File.expand_path(File.join(File.dirname(__FILE__), 'support', '**', '*.rb'))].sort.each do |f|
+Dir[File.expand_path(File.join(File.dirname(__FILE__), 'support', '**', '*.rb'))].each do |f|
   require f
 end
 
@@ -39,8 +39,8 @@ RSpec.configure do |config|
   config.before do |example|
     if example.metadata[:vcr]
       SiteMercado.config do |c|
-        c.client_id = ENV['SITEMERCADO_CLIENT_ID']
-        c.client_secret = ENV['SITEMERCADO_CLIENT_SECRET']
+        c.client_id = ENV.fetch('SITEMERCADO_CLIENT_ID', nil)
+        c.client_secret = ENV.fetch('SITEMERCADO_CLIENT_SECRET', nil)
       end
     end
   end

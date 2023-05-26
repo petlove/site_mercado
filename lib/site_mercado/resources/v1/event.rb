@@ -20,13 +20,13 @@ module SiteMercado
       def check(ids)
         body = case ids
                when Array
-                 ids.map { |id| { id: id } }
+                 ids.map { |id| { id: } }
                when Integer, String
                  [id: ids]
                else
                  [{}]
                end
-        Client.post('/pedido/eventos/verificado', body: body)
+        Client.post('/pedido/eventos/verificado', body:)
       end
     end
   end

@@ -33,8 +33,8 @@ module SiteMercado
 
     def credentials
       {
-        client_id: client_id,
-        client_secret: client_secret
+        client_id:,
+        client_secret:
       }
     end
   end
