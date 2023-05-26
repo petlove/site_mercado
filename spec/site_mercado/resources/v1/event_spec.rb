@@ -77,13 +77,13 @@ RSpec.describe SiteMercado::Event do
 
     context 'when array of ids' do
       let(:ids) { events.map(&:id) }
-      let(:body) { ids.map { |id| { id: id } } }
+      let(:body) { ids.map { |id| { id: } } }
 
       it 'calls post /pedido/eventos/verificado' do
         expect(SiteMercado::Client).to(
           receive(:post)
           .once
-          .with('/pedido/eventos/verificado', body: body)
+          .with('/pedido/eventos/verificado', body:)
         )
         subject
       end
@@ -97,7 +97,7 @@ RSpec.describe SiteMercado::Event do
         expect(SiteMercado::Client).to(
           receive(:post)
           .once
-          .with('/pedido/eventos/verificado', body: body)
+          .with('/pedido/eventos/verificado', body:)
         )
         subject
       end
@@ -111,7 +111,7 @@ RSpec.describe SiteMercado::Event do
         expect(SiteMercado::Client).to(
           receive(:post)
           .once
-          .with('/pedido/eventos/verificado', body: body)
+          .with('/pedido/eventos/verificado', body:)
         )
         subject
       end
@@ -125,7 +125,7 @@ RSpec.describe SiteMercado::Event do
         expect(SiteMercado::Client).to(
           receive(:post)
           .once
-          .with('/pedido/eventos/verificado', body: body)
+          .with('/pedido/eventos/verificado', body:)
         )
         subject
       end

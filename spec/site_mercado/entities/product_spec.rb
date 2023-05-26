@@ -32,14 +32,14 @@ RSpec.describe SiteMercado::Entities::Product do
     it 'returns the correct collection' do
       is_expected.to be_a(SiteMercado::Entities::Product)
 
-      description = 'O <strong>Vermífugo Bayer Drontal Plus Sabor Carne - Cães'\
-                    ' 10 Kg</strong> é indicado para o tratamento e controle '\
-                    'das verminoses intestinais e de giardíase em cães, '\
-                    'apresentando excelentes resultando contra parasitas '\
-                    'cestoides (vermes chatos), nematódeos (vermes redondos) e'\
-                    ' protozoários. <br><br> *Consulte sempre o medico '\
-                    'Veterinário de sua confiança para o uso apropriado deste '\
-                    'medicamento. Leia a bula ou informações descritas na '\
+      description = 'O <strong>Vermífugo Bayer Drontal Plus Sabor Carne - Cães ' \
+                    '10 Kg</strong> é indicado para o tratamento e controle ' \
+                    'das verminoses intestinais e de giardíase em cães, ' \
+                    'apresentando excelentes resultando contra parasitas ' \
+                    'cestoides (vermes chatos), nematódeos (vermes redondos) e ' \
+                    'protozoários. <br><br> *Consulte sempre o medico ' \
+                    'Veterinário de sua confiança para o uso apropriado deste ' \
+                    'medicamento. Leia a bula ou informações descritas na ' \
                     'embalagem.'
 
       expect(subject.attributes).to include(

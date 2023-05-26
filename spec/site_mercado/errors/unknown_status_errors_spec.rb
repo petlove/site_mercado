@@ -35,7 +35,7 @@ RSpec.describe SiteMercado::Errors::UnknownStatusError do
 
     context 'when response is given' do
       let(:body) { { foo: 'bar' }.to_s }
-      let(:response) { double(status: 422, body: body) }
+      let(:response) { double(status: 422, body:) }
 
       it 'exception has status attributes' do
         expect(subject.status).to eq(422)
