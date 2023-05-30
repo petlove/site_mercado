@@ -2,6 +2,6 @@
 
 RSpec.describe SiteMercado do
   it 'has a version number' do
-    expect(SiteMercado::VERSION).to eq('0.1.2')
+    expect(SiteMercado::VERSION).to eql('0.1.3')
   end
 end
