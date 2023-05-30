@@ -8,9 +8,7 @@ module SiteMercado
           SiteMercado::Entities::Product.new(product).attributes
         end
 
-        reset_param = '?reset=true' if reset
-
-        Client.post("/produtointegracao#{reset_param}", body: products)
+        Client.post("/produtointegracao#{reset ? '?reset=true' : ''}", body: products)
       end
     end
   end
